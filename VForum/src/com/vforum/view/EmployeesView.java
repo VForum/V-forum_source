@@ -20,9 +20,9 @@ public class EmployeesView {
 	private MainView mainView=new MainView();
 
 	public void showQuestions(List<PostModel> model,LoginModel loginModel){
-		System.out.println("=================================================================================================================================");
+		System.out.println("=====================================================================================================================");
 		System.out.format("%10s%15s%25s%45s\n","UserName","PostId","Question","Category");
-		System.out.println("=================================================================================================================================");
+		System.out.println("=====================================================================================================================");
 		for(PostModel models:model) {
 			System.out.format("%9s%12d%45s%30s\n",models.getUserId(),models.getPostId(),models.getPost(),models.getCategory());;
 			System.out.println("\n");
@@ -31,8 +31,11 @@ public class EmployeesView {
 	}
 	
 	public void replyMenu(LoginModel loginModel) {
-		System.out.println("=>1. Reply to Question ");
-		System.out.println("=>2. Back to Menu ");
+		System.out.println("***************************");
+		System.out.println("*=>1. Reply to Question   *");
+		System.out.println("*=>2. Report Question     *");
+		System.out.println("*=>3. Back to Menu        *");
+		System.out.println("***************************");
 		try(Scanner scanner=new Scanner(System.in);){
 			
 			System.out.print("\nEnter Choice:");
@@ -42,7 +45,9 @@ public class EmployeesView {
 			
 			case 1:postAnswerMenu(loginModel);
 			       break;
-			case 2:mainView.employeeMenu(loginModel);
+			case 2:
+				   break;
+			case 3:mainView.employeeMenu(loginModel);
 				   break;
 			
 			default:System.out.println("!ERROR[SELECT APPROPRIATE OPTION]");

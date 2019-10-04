@@ -17,11 +17,11 @@ public class LoginServiceImpl implements LoginService{
 	}
 
 	@Override
-	public String userAuthenticationService(LoginModel loginModel)throws ClassNotFoundException,SQLException {
+	public String userAuthenticationService(LoginModel loginModel,int option)throws ClassNotFoundException,SQLException {
 		// TODO Auto-generated method stub
 		
 		String result="fail";
-			boolean userValid=loginDAO.userAuth(loginModel.getUserId(),loginModel.getPassword());
+			boolean userValid=loginDAO.userAuth(loginModel.getUserId(),loginModel.getPassword(),option);
 			if(userValid){
 				result="success";}
 			else{

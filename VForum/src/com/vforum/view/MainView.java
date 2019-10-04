@@ -19,10 +19,12 @@ public class MainView {
 	
 	public void mainMenu() {
 		System.out.println("\n");
-		System.out.println("\t \t ***********========Main Menu========***********");
-		System.out.println("=>1. Admin ");
-		System.out.println("=>2. Employee ");
-		System.out.println("=>3. Exit");
+		System.out.println("\t\t\t\t***********=========*========MAIN MENU========*=======**********\n\n");
+		System.out.println("*****************************");
+		System.out.println("*=>1. Admin                 *");
+		System.out.println("*=>2. Employee              *");
+		System.out.println("*=>3. Exit                  *");
+		System.out.println("*****************************");
 		try(Scanner scanner=new Scanner(System.in);){
 			
 			System.out.print("\nEnter Choice:");
@@ -30,7 +32,7 @@ public class MainView {
 			
 			switch(option) {
 			
-			case 1:viewLoginMenu();
+			case 1:viewLoginMenu(option);
 			       break;
 			case 2:viewEmployeeMainMenu();
 				   break;
@@ -46,7 +48,7 @@ public class MainView {
 		}
 		
 	}
-	public void viewLoginMenu() throws ClassNotFoundException, SQLException{
+	public void viewLoginMenu(int option) throws ClassNotFoundException, SQLException{
 
 		try(
 				InputStreamReader reader=
@@ -54,15 +56,16 @@ public class MainView {
 					BufferedReader buffer=new BufferedReader(reader);
 					
 		     ){
-				
-				System.out.print("User ID:");
+				System.out.println("***************************");	
+				System.out.print("Enter User ID:");
 				String userId=buffer.readLine().trim();
 				
-				System.out.print("Password:");
+				System.out.print("Enter Password:");
 				String password=buffer.readLine().trim();
+				System.out.println("***************************");
 				
 				FrontController controller=new FrontController();
-				controller.userAuthentication(userId, password);
+				controller.userAuthentication(userId, password,option);
 				
 				
 			}catch(IOException e) {
@@ -75,16 +78,17 @@ public void viewEmployeeMainMenu() {
 		try(
 				Scanner scanner=new Scanner(System.in);
 		){
-			System.out.println("1. login ");
-			System.out.println("2. Registration ");
-			System.out.println("3. Main Menu");
-			
+			System.out.println("****************************");
+			System.out.println("*=>1. Login                *");
+			System.out.println("*=>2. Registration         *");
+			System.out.println("*=>3. Main Menu            *");
+			System.out.println("****************************");
 			System.out.print("Enter choice:");
 			int option=scanner.nextInt();
 			
 			switch(option) {
 			
-			case 1:viewLoginMenu();
+			case 1:viewLoginMenu(option);
 			       break;
 			case 2:registerEmployeeForm();
 				   break;
@@ -104,11 +108,13 @@ public void employeeMenu(LoginModel loginModel) {
 	try(
 			Scanner scanner=new Scanner(System.in);
 	){
-	System.out.println("=======Employee View======");
-	System.out.println("1.view profile ");
-	System.out.println("2.post question ");
-	System.out.println("3.view questions");
-	System.out.println("4:logout");
+	System.out.println("========== EMPLOYEE VIEW ========\n");
+	System.out.println("****************************");
+	System.out.println("*1.view profile            *");
+	System.out.println("*2.post question           *");
+	System.out.println("*3.view questions          *");
+	System.out.println("*4:logout                  *");
+	System.out.println("****************************");
 	System.out.print("Enter choice:");
 	int option=scanner.nextInt();
 	EmployeeController employeeController=new EmployeeController();
@@ -132,10 +138,12 @@ public void employeeMenu(LoginModel loginModel) {
 public void postQuestionForm(LoginModel loginModel) {
 	try(Scanner scanner=new Scanner(System.in);)
 	{
+		System.out.println("***************************");
 		System.out.println("Enter question");
 		String question=scanner.nextLine();
 		System.out.println("Enter title");
 		String title=scanner.next();
+		System.out.println("***************************");
 		PostQuestionModel postModel=new PostQuestionModel();
 		postModel.setUserId(loginModel.getUserId());
 		postModel.setPost(question);
@@ -150,6 +158,9 @@ public void postQuestionForm(LoginModel loginModel) {
 public void registerEmployeeForm() {
 	
 	try(Scanner scanner=new Scanner(System.in);){			
+	System.out.println("***************************");
+	System.out.println("##### REGISTRATION FORM ##### ");
+	System.out.println("***************************");
 	System.out.print("Employee User Id:");
 	String employeeUid=scanner.next();
 	EmployeesModelValidator validator=new EmployeesModelValidator();
