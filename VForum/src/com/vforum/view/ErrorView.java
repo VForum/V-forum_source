@@ -4,7 +4,7 @@ public class ErrorView {
 	
 public void authenticationError() {
 		
-		System.out.println("=======Failed ! wrong details ======");
+		System.out.println("=======Login Failed ! wrong details ======");
 	}
 
 }

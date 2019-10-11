@@ -12,7 +12,7 @@ public class RegisterEmployeeModel {
 	private String email;
 	private String phoneNumber;
 	private String designation;
-	private int employeeId;
+	private String dob;
 	private String password;
 	
 	public RegisterEmployeeModel() { }
@@ -65,12 +65,12 @@ public class RegisterEmployeeModel {
 		this.designation = designation;
 	}
 
-	public int getEmployeeId() {
-		return employeeId;
+	public String getDob() {
+		return dob;
 	}
 
-	public void setEmployeeId(int employeeId) {
-		this.employeeId = employeeId;
+	public void setDob(String dob) {
+		this.dob = dob;
 	}
 
 	public String getPassword() {
@@ -82,19 +82,12 @@ public class RegisterEmployeeModel {
 	}
 
 	@Override
-	public String toString() {
-		return "RegisterEmployeeModel [employeeUid=" + employeeUid + ", firstName=" + firstName + ", lastName="
-				+ lastName + ", email=" + email + ", phoneNumber=" + phoneNumber + ", designation=" + designation
-				+ ", employeeId=" + employeeId + ", password=" + password + "]";
-	}
-
-	@Override
 	public int hashCode() {
 		final int prime = 31;
 		int result = 1;
 		result = prime * result + ((designation == null) ? 0 : designation.hashCode());
+		result = prime * result + ((dob == null) ? 0 : dob.hashCode());
 		result = prime * result + ((email == null) ? 0 : email.hashCode());
-		result = prime * result + employeeId;
 		result = prime * result + ((employeeUid == null) ? 0 : employeeUid.hashCode());
 		result = prime * result + ((firstName == null) ? 0 : firstName.hashCode());
 		result = prime * result + ((lastName == null) ? 0 : lastName.hashCode());
@@ -117,12 +110,15 @@ public class RegisterEmployeeModel {
 				return false;
 		} else if (!designation.equals(other.designation))
 			return false;
+		if (dob == null) {
+			if (other.dob != null)
+				return false;
+		} else if (!dob.equals(other.dob))
+			return false;
 		if (email == null) {
 			if (other.email != null)
 				return false;
 		} else if (!email.equals(other.email))
-			return false;
-		if (employeeId != other.employeeId)
 			return false;
 		if (employeeUid == null) {
 			if (other.employeeUid != null)
@@ -151,5 +147,14 @@ public class RegisterEmployeeModel {
 			return false;
 		return true;
 	}
+
+	@Override
+	public String toString() {
+		return "RegisterEmployeeModel [employeeUid=" + employeeUid + ", firstName=" + firstName + ", lastName="
+				+ lastName + ", email=" + email + ", phoneNumber=" + phoneNumber + ", designation=" + designation
+				+ ", dob=" + dob + ", password=" + password + "]";
+	}
+
+	
 	
 }

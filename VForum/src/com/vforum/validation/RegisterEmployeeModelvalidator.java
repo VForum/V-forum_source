@@ -11,7 +11,7 @@ public boolean validate(RegisterEmployeeModel model) {
 		
 		boolean result=false;
 		
-		if(validString(model.getFirstName()) && validString(model.getLastName()) && validNumber(model.getEmployeeId()) && validEmail(model.getEmail())){
+		if(validString(model.getFirstName()) && validString(model.getLastName()) && validEmail(model.getEmail())){
 			result=true;
 		}
 		

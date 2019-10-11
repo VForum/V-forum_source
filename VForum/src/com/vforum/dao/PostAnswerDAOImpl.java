@@ -14,10 +14,10 @@ public class PostAnswerDAOImpl implements PostAnswerDAO {
 		// TODO Auto-generated method stub
 		Connection connection=ConnectionManager.openConnection();
 		PreparedStatement statement=
-				connection.prepareStatement("insert into answers(apost_id,answer_id,aemp_uid,answer) values(?,ANSWERIDSEQ.nextval,?,?)");
+				connection.prepareStatement("insert into answers(a_post_id,a_username,answer) values(?,?,?)");
 		statement.setInt(1,answers.getPostId());
-		statement.setString(3,answers.getAnswer());
 		statement.setString(2,answers.getEmpUserId());
+		statement.setString(3,answers.getAnswer());
 		int rows=statement.executeUpdate();
 		ConnectionManager.closeConnection();
 		

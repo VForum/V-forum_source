@@ -2,12 +2,10 @@ package com.vforum.controller;
 
 import java.sql.SQLException;
 
-import com.vforum.exception.UserException;
 import com.vforum.helper.FactoryEmployeeDB;
 import com.vforum.model.LoginModel;
 import com.vforum.service.LoginService;
-import com.vforum.view.EmployeesView;
-//import com.vforum.view.EmployeesView;
+import com.vforum.view.AdminView;
 import com.vforum.view.ErrorView;
 import com.vforum.view.MainView;
 
@@ -15,6 +13,8 @@ public class FrontController {
 
 	private LoginService loginService;
 	MainView mainView=new MainView();
+	AdminView adminView=new AdminView();
+	ErrorView errorView=new ErrorView();
 	public FrontController() {
 		this.loginService=
 				FactoryEmployeeDB.createLoginService();
@@ -27,12 +27,15 @@ public class FrontController {
 		loginModel.setPassword(password);
 		
 			String outcome=loginService.userAuthenticationService(loginModel,option);
-		
-			if(outcome.contentEquals("success")){
-			mainView.employeeMenu(loginModel);
-		}
-		else{
-			mainView.viewEmployeeMainMenu();
+	
+			if(outcome.contentEquals("ADMIN")){
+			adminView.mainAdminView(loginModel);
+			}
+			else if(outcome.contentEquals("EMPLOYEE")) {
+				mainView.employeeMenu(loginModel);
+			}
+		else {
+			errorView.authenticationError();
 		}
 	}	
 }

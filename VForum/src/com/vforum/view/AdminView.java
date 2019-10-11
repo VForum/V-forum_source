@@ -1,8 +1,10 @@
 package com.vforum.view;
 
+import com.vforum.model.LoginModel;
+
 public class AdminView {
 
-public void mainAdminView() {
+public void mainAdminView(LoginModel loginModel) {
 		
 		System.out.println("=======Admin View======");
 		System.out.println("1. view employees ");

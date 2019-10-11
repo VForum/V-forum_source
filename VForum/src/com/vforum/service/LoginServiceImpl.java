@@ -20,16 +20,10 @@ public class LoginServiceImpl implements LoginService{
 	public String userAuthenticationService(LoginModel loginModel,int option)throws ClassNotFoundException,SQLException {
 		// TODO Auto-generated method stub
 		
-		String result="fail";
-			boolean userValid=loginDAO.userAuth(loginModel.getUserId(),loginModel.getPassword(),option);
-			if(userValid){
-				result="success";}
-			else{
-				EmployeesView employeesView=new EmployeesView();
-				employeesView.showLoginFailure();
-				 }
 		
-		return result;
+			String userValid=loginDAO.userAuth(loginModel.getUserId(),loginModel.getPassword(),option);
+			
+			return userValid;
 	}
 
 	

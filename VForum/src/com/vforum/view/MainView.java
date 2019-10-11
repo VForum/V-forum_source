@@ -37,14 +37,14 @@ public class MainView {
 			case 2:viewEmployeeMainMenu();
 				   break;
 			
-			default:System.out.println("!ERROR[SELECT APPROPRIATE OPTION]");
+			default:System.out.println("!ERROR[SELECT APPROPRIATE OPTION] mainMenu");
 			        mainMenu();
 				  
 			}
 			
 		}catch(Exception e) {
 			
-			System.out.println("!ERROR[SELECT APPROPRIATE OPTION]");
+			System.out.println("!ERROR[SELECT APPROPRIATE OPTION] mainMenu catch");
 		}
 		
 	}
@@ -65,7 +65,7 @@ public class MainView {
 				System.out.println("***************************");
 				
 				FrontController controller=new FrontController();
-				controller.userAuthentication(userId, password,option);
+				controller.userAuthentication(userId,password,option);
 				
 				
 			}catch(IOException e) {
@@ -93,8 +93,8 @@ public void viewEmployeeMainMenu() {
 			case 2:registerEmployeeForm();
 				   break;
 			
-			case 3:viewEmployeeMainMenu();
-			default:System.out.println("!ERROR[SELECT APPROPRIATE OPTION]");
+			case 3:mainMenu();
+			default:System.out.println("!ERROR[SELECT APPROPRIATE OPTION] viewEmployeeMenu");
 	        viewEmployeeMainMenu();
 				  
 			}
@@ -127,7 +127,7 @@ public void employeeMenu(LoginModel loginModel) {
 			break;
 	case 4:viewEmployeeMainMenu();
 			break;
-	default:System.out.println("!ERROR[SELECT APPROPRIATE OPTION]");
+	default:System.out.println("!ERROR[SELECT APPROPRIATE OPTION] employeeMenu");
 		employeeMenu(loginModel);
 	}
 	}
@@ -161,7 +161,7 @@ public void registerEmployeeForm() {
 	System.out.println("***************************");
 	System.out.println("##### REGISTRATION FORM ##### ");
 	System.out.println("***************************");
-	System.out.print("Employee User Id:");
+	System.out.print("Username:");
 	String employeeUid=scanner.next();
 	EmployeesModelValidator validator=new EmployeesModelValidator();
 		System.out.print("First Name:");
@@ -205,8 +205,8 @@ public void registerEmployeeForm() {
 		String phoneNumber=scanner.next();
 		System.out.print("Designation :");
 		String designation=scanner.next();
-		System.out.print("Employee Id:");
-		int employeeId=scanner.nextInt();
+		System.out.print("Date of Birth:");
+		String dob=scanner.next();
 		
 		System.out.print("Password :");
 		String password=scanner.next();
@@ -218,7 +218,7 @@ public void registerEmployeeForm() {
 		model.setEmail(email);
 		model.setPhoneNumber(phoneNumber);
 		model.setDesignation(designation);
-		model.setEmployeeId(employeeId);
+		model.setDob(dob);
 		model.setPassword(password);
 		
 		EmployeeController controller=new EmployeeController();

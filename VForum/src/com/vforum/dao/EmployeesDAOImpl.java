@@ -21,24 +21,25 @@ public class EmployeesDAOImpl implements EmployeesDAO {
 		// TODO Auto-generated method stub
 			Connection connection=ConnectionManager.openConnection();
 			PreparedStatement statement=
-					connection.prepareStatement("insert into employees values(?,?,?,?,?,?,?,?)");
+					connection.prepareStatement("insert into employees_info values(?,?,?,?,?,?,?,?)");
 			statement.setString(1,employees.getEmployeeUid());
 			statement.setString(2,employees.getFirstName());
 			statement.setString(3, employees.getLastName());
 			statement.setString(4, employees.getEmail());
 			statement.setString(5,employees.getPhoneNumber());
 			statement.setString(6,employees.getDesignation());
-			statement.setInt(7, employees.getEmployeeId());
-			statement.setString(8,employees.getPassword());
-			
-			int rows=statement.executeUpdate();
+			int rows1=statement.executeUpdate();
+			PreparedStatement statement1=
+					connection.prepareStatement("insert into user_credentials values(?,?,'EMPLOYEE')");
+			statement1.setString(1,employees.getEmployeeUid());
+			statement1.setString(2,employees.getPassword());
+			int rows2=statement.executeUpdate();
 			ConnectionManager.closeConnection();
 			
-			if(rows>0)
+			if(rows1>0 && rows2>0)
 				return true;
 			else
-		
-			return false;
+				return false;
 		} 
 	
 	@Override
@@ -52,7 +53,7 @@ public class EmployeesDAOImpl implements EmployeesDAO {
 		List<Posts> postList=new ArrayList<Posts>();
 		while(resultSet.next()) {
 			Posts post=new Posts();
-			post.setUserId(resultSet.getString("pemp_uid"));
+			post.setUserId(resultSet.getString("p_username"));
 			post.setPostId(resultSet.getInt("post_id"));
 			post.setPost(resultSet.getString("post"));
 			post.setCategory(resultSet.getString("title"));

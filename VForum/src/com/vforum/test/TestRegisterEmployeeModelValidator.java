@@ -33,11 +33,5 @@ public class TestRegisterEmployeeModelValidator {
 		boolean actual=validator.validString("sabbir111");
 		assertEquals(false,actual);
     	}
-
-	@Test
-	void testValidNumber_positive() {
-		boolean actual=validator.validNumber(12000);
-		assertEquals(true,actual);
-	}
 	
 }

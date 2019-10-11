@@ -32,7 +32,7 @@ public class EmployeesServiceImpl implements EmployeesService{
 		employees.setPhoneNumber(model.getPhoneNumber());
 		employees.setDesignation(model.getDesignation());
 		employees.setPassword(model.getPassword());
-		employees.setEmployeeId(model.getEmployeeId());
+		employees.setDob(model.getDob());
 		
 		String result="fail";
 		try {

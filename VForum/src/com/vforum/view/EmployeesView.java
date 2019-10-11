@@ -50,13 +50,13 @@ public class EmployeesView {
 			case 3:mainView.employeeMenu(loginModel);
 				   break;
 			
-			default:System.out.println("!ERROR[SELECT APPROPRIATE OPTION]");
+			default:System.out.println("!ERROR[SELECT APPROPRIATE OPTION] replyMenu ");
 			        replyMenu(loginModel);
 			}
 			
 		}catch(Exception e) {
 			
-			System.out.println("!ERROR[SELECT APPROPRIATE OPTION]");
+			System.out.println("!ERROR[SELECT APPROPRIATE OPTION] replyMenu catch");
 		}
 	}
 	public void postAnswerMenu(LoginModel loginModel) {
@@ -81,12 +81,12 @@ public class EmployeesView {
 	}
 	
 	public void showRegistrationSuccess(RegisterEmployeeModel model) {
-		System.out.println("\n Registration successful for employee id=>"+model.getEmployeeId());
+		System.out.println("\n Registration successful ");
 		mainView.mainMenu();
 	}
 	
 	public void showRegistrationFailure(RegisterEmployeeModel model) {
-		System.out.println("\n Registration unsuccessful for employee id=>"+model.getEmployeeId());
+		System.out.println("\n Registration unsuccessful");
 		mainView.mainMenu();
 	}
 	public void showPostSuccess(PostQuestionModel model,LoginModel loginModel) {
