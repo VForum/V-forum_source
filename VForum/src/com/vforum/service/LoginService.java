@@ -6,5 +6,5 @@ import com.vforum.model.LoginModel;
 
 public interface LoginService {
 
-	public String userAuthenticationService(LoginModel loginModel,int option)throws ClassNotFoundException,SQLException;
+	public String userAuthenticationService(LoginModel loginModel)throws ClassNotFoundException,SQLException;
 }

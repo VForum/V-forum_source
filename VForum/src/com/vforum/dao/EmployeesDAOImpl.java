@@ -20,20 +20,21 @@ public class EmployeesDAOImpl implements EmployeesDAO {
 	public boolean storeEmployeeDetails(Employees employees) throws ClassNotFoundException, SQLException {
 		// TODO Auto-generated method stub
 			Connection connection=ConnectionManager.openConnection();
-			PreparedStatement statement=
-					connection.prepareStatement("insert into employees_info values(?,?,?,?,?,?,?,?)");
-			statement.setString(1,employees.getEmployeeUid());
-			statement.setString(2,employees.getFirstName());
-			statement.setString(3, employees.getLastName());
-			statement.setString(4, employees.getEmail());
-			statement.setString(5,employees.getPhoneNumber());
-			statement.setString(6,employees.getDesignation());
-			int rows1=statement.executeUpdate();
-			PreparedStatement statement1=
+			PreparedStatement statementEmployeesInfo=
+					connection.prepareStatement("insert into employees_info values(?,?,?,?,?,?,?)");
+			statementEmployeesInfo.setString(1,employees.getEmployeeUid());
+			statementEmployeesInfo.setString(2,employees.getFirstName());
+			statementEmployeesInfo.setString(3, employees.getLastName());
+			statementEmployeesInfo.setString(4, employees.getEmail());
+			statementEmployeesInfo.setString(5,employees.getPhoneNumber());
+			statementEmployeesInfo.setString(6,employees.getDesignation());
+			statementEmployeesInfo.setString(7,employees.getDob());
+			int rows1=statementEmployeesInfo.executeUpdate();
+			PreparedStatement statementUserCredentials=
 					connection.prepareStatement("insert into user_credentials values(?,?,'EMPLOYEE')");
-			statement1.setString(1,employees.getEmployeeUid());
-			statement1.setString(2,employees.getPassword());
-			int rows2=statement.executeUpdate();
+			statementUserCredentials.setString(1,employees.getEmployeeUid());
+			statementUserCredentials.setString(2,employees.getPassword());
+			int rows2=statementUserCredentials.executeUpdate();
 			ConnectionManager.closeConnection();
 			
 			if(rows1>0 && rows2>0)

@@ -20,13 +20,13 @@ public class FrontController {
 				FactoryEmployeeDB.createLoginService();
 	}
 	
-	public void userAuthentication(String userId,String password,int option)throws ClassNotFoundException,SQLException {
+	public void userAuthentication(String userId,String password)throws ClassNotFoundException,SQLException {
 		
 		LoginModel loginModel=new LoginModel();
 		loginModel.setUserId(userId);
 		loginModel.setPassword(password);
 		
-			String outcome=loginService.userAuthenticationService(loginModel,option);
+			String outcome=loginService.userAuthenticationService(loginModel);
 	
 			if(outcome.contentEquals("ADMIN")){
 			adminView.mainAdminView(loginModel);

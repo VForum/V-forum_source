@@ -32,7 +32,7 @@ public class MainView {
 			
 			switch(option) {
 			
-			case 1:viewLoginMenu(option);
+			case 1:viewLoginMenu();
 			       break;
 			case 2:viewEmployeeMainMenu();
 				   break;
@@ -48,7 +48,7 @@ public class MainView {
 		}
 		
 	}
-	public void viewLoginMenu(int option) throws ClassNotFoundException, SQLException{
+	public void viewLoginMenu() throws ClassNotFoundException, SQLException{
 
 		try(
 				InputStreamReader reader=
@@ -65,7 +65,7 @@ public class MainView {
 				System.out.println("***************************");
 				
 				FrontController controller=new FrontController();
-				controller.userAuthentication(userId,password,option);
+				controller.userAuthentication(userId,password);
 				
 				
 			}catch(IOException e) {
@@ -88,7 +88,7 @@ public void viewEmployeeMainMenu() {
 			
 			switch(option) {
 			
-			case 1:viewLoginMenu(option);
+			case 1:viewLoginMenu();
 			       break;
 			case 2:registerEmployeeForm();
 				   break;
