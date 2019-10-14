@@ -1,7 +1,5 @@
 package com.vforum.model;
 
-import java.time.LocalDate;
-
 public class PostQuestionModel {
 	private String userId;
 	private int postId;

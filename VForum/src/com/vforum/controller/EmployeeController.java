@@ -3,6 +3,7 @@ package com.vforum.controller;
 import java.sql.SQLException;
 import java.util.List;
 import com.vforum.helper.FactoryEmployeeDB;
+import com.vforum.model.EmployeeModel;
 import com.vforum.model.LoginModel;
 import com.vforum.model.PostModel;
 import com.vforum.model.RegisterEmployeeModel;
@@ -39,5 +40,9 @@ public class EmployeeController {
 	public void viewQuestions(LoginModel loginModel) {
 		List<PostModel> models=employeeService.retrievePosts();
 		employeeView.showQuestions(models,loginModel);
+	}
+	public void viewProfile(LoginModel loginModel) {
+		List<EmployeeModel> models=employeeService.getProfile();
+		employeeView.showProfile(models,loginModel);
 	}
 }

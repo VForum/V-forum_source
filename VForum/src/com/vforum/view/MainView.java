@@ -118,7 +118,7 @@ public void employeeMenu(LoginModel loginModel) {
 	int option=scanner.nextInt();
 	EmployeeController employeeController=new EmployeeController();
 	switch(option){
-	case 1:
+	case 1:employeeController.viewProfile(loginModel);
 			break;
 	case 2:postQuestionForm(loginModel);
 			break;

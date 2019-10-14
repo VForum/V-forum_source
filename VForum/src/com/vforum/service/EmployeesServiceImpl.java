@@ -8,6 +8,7 @@ import com.vforum.dao.EmployeesDAO;
 import com.vforum.entities.Employees;
 import com.vforum.entities.Posts;
 import com.vforum.helper.FactoryEmployeeDB;
+import com.vforum.model.EmployeeModel;
 import com.vforum.model.PostModel;
 import com.vforum.model.RegisterEmployeeModel;
 
@@ -69,5 +70,25 @@ public class EmployeesServiceImpl implements EmployeesService{
 		}
 		
 		return postModelList;
+	}
+	@Override
+	public List<EmployeeModel> getProfile() {
+		// TODO Auto-generated method stub
+		List<EmployeeModel> profileModelList=new ArrayList<>();
+		try {
+			List<Employees> profileList=employeesDAO.getProfile();
+			for(Employees employees:profileList) {
+				
+				EmployeeModel employeeModel=new EmployeeModel();
+				employeeModel.setFirstName(employees.getFirstName());
+				
+			}
+			
+		} catch (ClassNotFoundException | SQLException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+		
+		return profileModelList;
 	}
 	}

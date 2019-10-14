@@ -7,6 +7,7 @@ import java.util.List;
 import com.vforum.dao.AdminDAO;
 import com.vforum.entities.Employees;
 import com.vforum.helper.FactoryAdminDB;
+import com.vforum.model.EmployeeModel;
 import com.vforum.model.RegisterEmployeeModel;
 
 public class AdminServiceImpl implements AdminService {
@@ -18,9 +19,9 @@ private AdminDAO adminDAO;
 	}
 
 	@Override
-	public List<RegisterEmployeeModel> retrieveEmployees() {
+	public List<EmployeeModel> retrieveEmployees() {
 		// TODO Auto-generated method stub
-		List<RegisterEmployeeModel> employeesModelList=new ArrayList<>();
+		List<EmployeeModel> employeesModelList=new ArrayList<>();
 		
 			List<Employees> employeesList;
 			try {
@@ -28,7 +29,7 @@ private AdminDAO adminDAO;
 			
 			for(Employees employees:employeesList)
 			{
-				RegisterEmployeeModel employeesModel=new RegisterEmployeeModel();
+				EmployeeModel employeesModel=new EmployeeModel();
 				employeesModel.setEmployeeUid(employees.getEmployeeUid());
 				employeesModel.setFirstName(employees.getFirstName());
 				employeesModel.setLastName(employees.getLastName());

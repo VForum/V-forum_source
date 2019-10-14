@@ -6,7 +6,7 @@ import java.util.Scanner;
 import com.vforum.controller.AdminController;
 import com.vforum.controller.EmployeeController;
 import com.vforum.model.LoginModel;
-import com.vforum.model.RegisterEmployeeModel;
+import com.vforum.model.EmployeeModel;
 
 public class AdminView {
 
@@ -39,14 +39,15 @@ public void mainAdminView(LoginModel loginModel) {
 	}
 }
 
-	public void showEmployees(List<RegisterEmployeeModel> model,LoginModel loginModel){
+	public void showEmployees(List<EmployeeModel> model,LoginModel loginModel){
 		System.out.println("=====================================================================================================================");
 		System.out.format("%10s%15s%15s%15s%20s%20s%20s\n","UserName","FirstName","LastName","Email","PhoneNumber","Desgination","DOB");
 		System.out.println("=====================================================================================================================");
-		for(RegisterEmployeeModel models:model) {
+		for(EmployeeModel models:model) {
 		System.out.format("%5s,%12s,%15s,%15s,%15s,%15s%15s\n",models.getEmployeeUid(),models.getFirstName(),models.getLastName(),models.getEmail(),models.getPhoneNumber(),models.getDesignation(),models.getDob());
 		System.out.println("\n");
 	}
+		mainAdminView(loginModel);
 	
 }
 }

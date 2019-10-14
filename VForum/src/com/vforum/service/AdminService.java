@@ -2,9 +2,9 @@ package com.vforum.service;
 
 import java.util.List;
 
-import com.vforum.model.RegisterEmployeeModel;
+import com.vforum.model.EmployeeModel;
 
 public interface AdminService {
 
-	public List<RegisterEmployeeModel> retrieveEmployees();
+	public List<EmployeeModel> retrieveEmployees();
 }
