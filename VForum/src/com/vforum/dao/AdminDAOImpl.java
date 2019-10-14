@@ -8,6 +8,7 @@ import java.util.ArrayList;
 import java.util.List;
 
 import com.vforum.entities.Employees;
+import com.vforum.entities.Posts;
 import com.vforum.integrate.ConnectionManager;
 
 public class AdminDAOImpl implements AdminDAO{
@@ -34,6 +35,27 @@ public class AdminDAOImpl implements AdminDAO{
 		ConnectionManager.closeConnection();
 		return employeesList;
 
+	}
+	@Override
+	public List<Posts> getAllQuestions() throws ClassNotFoundException, SQLException {
+		// TODO Auto-generated method stub
+		Connection connection=ConnectionManager.openConnection();
+		Statement statement=connection.createStatement();
+		ResultSet resultSet=
+				statement.executeQuery("select * from questions");
+		
+		List<Posts> postList=new ArrayList<Posts>();
+		while(resultSet.next()) {
+			Posts post=new Posts();
+			post.setUserId(resultSet.getString("p_username"));
+			post.setPostId(resultSet.getInt("post_id"));
+			post.setPost(resultSet.getString("post"));
+			post.setCategory(resultSet.getString("title"));
+			postList.add(post);
+		}
+		ConnectionManager.closeConnection();
+
+		return postList;
 	}
 }
 

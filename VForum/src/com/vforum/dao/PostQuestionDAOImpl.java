@@ -14,7 +14,7 @@ public class PostQuestionDAOImpl implements PostQuestionDAO {
 		// TODO Auto-generated method stub
 		Connection connection=ConnectionManager.openConnection();
 		PreparedStatement statement=
-				connection.prepareStatement("insert into posts(p_username,post_id,post,title) values(?,NULL,?,?)");
+				connection.prepareStatement("insert into questions(p_username,post_id,post,title) values(?,NULL,?,?)");
 		statement.setString(1,posts.getUserId());
 		//System.out.println(posts.getUserId());
 		statement.setString(2,posts.getPost());

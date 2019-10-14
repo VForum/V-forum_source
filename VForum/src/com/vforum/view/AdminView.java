@@ -4,15 +4,14 @@ import java.util.List;
 import java.util.Scanner;
 
 import com.vforum.controller.AdminController;
-import com.vforum.controller.EmployeeController;
 import com.vforum.model.LoginModel;
+import com.vforum.model.PostModel;
 import com.vforum.model.EmployeeModel;
 
 public class AdminView {
 
 public void mainAdminView(LoginModel loginModel) {
 	AdminController adminController=new AdminController();
-	EmployeeController employeeController=new EmployeeController();
 	MainView mainView=new MainView();
 	try(
 			Scanner scanner=new Scanner(System.in);
@@ -28,7 +27,7 @@ public void mainAdminView(LoginModel loginModel) {
 		switch(option) {
 		case 1:adminController.viewEmployees(loginModel);
 				break;
-		case 2:employeeController.viewQuestions(loginModel);
+		case 2:adminController.viewQuestions(loginModel);
 				break;
 		case 5:mainView.mainMenu();
 		break;
@@ -44,10 +43,20 @@ public void mainAdminView(LoginModel loginModel) {
 		System.out.format("%10s%15s%15s%15s%20s%20s%20s\n","UserName","FirstName","LastName","Email","PhoneNumber","Desgination","DOB");
 		System.out.println("=====================================================================================================================");
 		for(EmployeeModel models:model) {
-		System.out.format("%5s,%12s,%15s,%15s,%15s,%15s%15s\n",models.getEmployeeUid(),models.getFirstName(),models.getLastName(),models.getEmail(),models.getPhoneNumber(),models.getDesignation(),models.getDob());
+		System.out.format("%5s%12s%15s%15s%15s%15s%15s\n",models.getEmployeeUid(),models.getFirstName(),models.getLastName(),models.getEmail(),models.getPhoneNumber(),models.getDesignation(),models.getDob());
 		System.out.println("\n");
 	}
 		mainAdminView(loginModel);
 	
 }
+	public void showQuestions(List<PostModel> model,LoginModel loginModel){
+		System.out.println("=====================================================================================================================");
+		System.out.format("%10s%15s%25s%40s\n","UserName","PostId","Question","Category");
+		System.out.println("=====================================================================================================================");
+		for(PostModel models:model) {
+			System.out.format("%9s%12d%30s%40s\n",models.getUserId(),models.getPostId(),models.getPost(),models.getCategory());;
+			System.out.println("\n");
+		}
+		mainAdminView(loginModel);
+	}
 }

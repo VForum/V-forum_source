@@ -9,6 +9,7 @@ import com.vforum.entities.Employees;
 import com.vforum.entities.Posts;
 import com.vforum.helper.FactoryEmployeeDB;
 import com.vforum.model.EmployeeModel;
+import com.vforum.model.LoginModel;
 import com.vforum.model.PostModel;
 import com.vforum.model.RegisterEmployeeModel;
 
@@ -72,15 +73,22 @@ public class EmployeesServiceImpl implements EmployeesService{
 		return postModelList;
 	}
 	@Override
-	public List<EmployeeModel> getProfile() {
+	public List<EmployeeModel> getProfile(LoginModel loginModel) {
 		// TODO Auto-generated method stub
 		List<EmployeeModel> profileModelList=new ArrayList<>();
 		try {
-			List<Employees> profileList=employeesDAO.getProfile();
+			List<Employees> profileList=employeesDAO.getProfile(loginModel);
 			for(Employees employees:profileList) {
 				
-				EmployeeModel employeeModel=new EmployeeModel();
-				employeeModel.setFirstName(employees.getFirstName());
+				EmployeeModel employeesModel=new EmployeeModel();
+				employeesModel.setEmployeeUid(employees.getEmployeeUid());
+				employeesModel.setFirstName(employees.getFirstName());
+				employeesModel.setLastName(employees.getLastName());
+				employeesModel.setEmail(employees.getEmail());
+				employeesModel.setPhoneNumber(employees.getPhoneNumber());
+				employeesModel.setDesignation(employees.getDesignation());
+				employeesModel.setDob(employees.getDob());
+				profileModelList.add(employeesModel);
 				
 			}
 			

@@ -5,7 +5,7 @@ import java.util.List;
 import com.vforum.helper.FactoryAdminDB;
 import com.vforum.model.EmployeeModel;
 import com.vforum.model.LoginModel;
-import com.vforum.model.RegisterEmployeeModel;
+import com.vforum.model.PostModel;
 import com.vforum.service.AdminService;
 import com.vforum.view.AdminView;
 
@@ -23,5 +23,9 @@ public class AdminController {
 	public void viewEmployees(LoginModel loginModel) {
 		List<EmployeeModel> models=adminService.retrieveEmployees();
 		adminView.showEmployees(models,loginModel);
+	}
+	public void viewQuestions(LoginModel loginModel) {
+		List<PostModel> models=adminService.retrievePosts();
+		adminView.showQuestions(models,loginModel);
 	}
 }

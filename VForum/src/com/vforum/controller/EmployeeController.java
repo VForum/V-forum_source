@@ -42,7 +42,7 @@ public class EmployeeController {
 		employeeView.showQuestions(models,loginModel);
 	}
 	public void viewProfile(LoginModel loginModel) {
-		List<EmployeeModel> models=employeeService.getProfile();
+		List<EmployeeModel> models=employeeService.getProfile(loginModel);
 		employeeView.showProfile(models,loginModel);
 	}
 }

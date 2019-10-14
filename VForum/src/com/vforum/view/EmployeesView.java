@@ -36,6 +36,7 @@ public class EmployeesView {
 		System.out.format("%5s,%12s,%15s,%15s,%15s,%15s%15s\n",models.getEmployeeUid(),models.getFirstName(),models.getLastName(),models.getEmail(),models.getPhoneNumber(),models.getDesignation(),models.getDob());
 		System.out.println("\n");
 	}
+		mainView.employeeMenu(loginModel);
 		}
 		
 	

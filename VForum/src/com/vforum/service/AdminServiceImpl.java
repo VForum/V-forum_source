@@ -6,12 +6,15 @@ import java.util.List;
 
 import com.vforum.dao.AdminDAO;
 import com.vforum.entities.Employees;
+import com.vforum.entities.Posts;
 import com.vforum.helper.FactoryAdminDB;
 import com.vforum.model.EmployeeModel;
+import com.vforum.model.PostModel;
 import com.vforum.model.RegisterEmployeeModel;
 
 public class AdminServiceImpl implements AdminService {
 private AdminDAO adminDAO;
+
 	
 	public AdminServiceImpl() {
 		this.adminDAO=FactoryAdminDB.createAdminDAO();
@@ -43,5 +46,30 @@ private AdminDAO adminDAO;
 				e.printStackTrace();
 			}
 		return employeesModelList;
+	}
+	@Override
+	public List<PostModel> retrievePosts() {
+		// TODO Auto-generated method stub
+		
+		List<PostModel> postModelList=new ArrayList<>();
+		try {
+			List<Posts> postsList=adminDAO.getAllQuestions();
+			for(Posts posts:postsList) {
+				
+				PostModel postModel=new PostModel();
+				postModel.setPostId(posts.getPostId());
+				postModel.setUserId(posts.getUserId());
+				postModel.setPost(posts.getPost());
+				postModel.setCategory(posts.getCategory());
+				postModelList.add(postModel);
+				
+			}
+			
+		} catch (ClassNotFoundException | SQLException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+		
+		return postModelList;
 	}
 }

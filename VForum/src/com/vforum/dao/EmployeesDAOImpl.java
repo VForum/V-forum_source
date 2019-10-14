@@ -10,6 +10,7 @@ import java.util.List;
 import com.vforum.entities.Employees;
 import com.vforum.entities.Posts;
 import com.vforum.integrate.ConnectionManager;
+import com.vforum.model.LoginModel;
 
 public class EmployeesDAOImpl implements EmployeesDAO {
 
@@ -46,7 +47,7 @@ public class EmployeesDAOImpl implements EmployeesDAO {
 		Connection connection=ConnectionManager.openConnection();
 		Statement statement=connection.createStatement();
 		ResultSet resultSet=
-				statement.executeQuery("select * from posts");
+				statement.executeQuery("select * from questions");
 		
 		List<Posts> postList=new ArrayList<Posts>();
 		while(resultSet.next()) {
@@ -63,12 +64,13 @@ public class EmployeesDAOImpl implements EmployeesDAO {
 	}
 
 	@Override
-	public List<Employees> getProfile() throws ClassNotFoundException, SQLException {
+	public List<Employees> getProfile(LoginModel loginModel) throws ClassNotFoundException, SQLException {
 		// TODO Auto-generated method stub
 		Connection connection=ConnectionManager.openConnection();
-		Statement statement=connection.createStatement();
-		ResultSet resultSet = statement.executeQuery("select * from employees_info");
-		
+		PreparedStatement profile=
+				connection.prepareStatement("select * from employees_info where employee_uname=?");
+				profile.setString(1,loginModel.getUserId());
+		ResultSet resultSet=profile.executeQuery();
 		List<Employees> employeesList=new ArrayList<Employees>();
 		while(resultSet.next()) {
 			Employees employees=new Employees();
