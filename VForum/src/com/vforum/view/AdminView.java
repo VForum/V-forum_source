@@ -6,10 +6,8 @@ import java.util.List;
 import java.util.Scanner;
 
 import com.vforum.controller.AdminController;
-import com.vforum.controller.EmployeeController;
 import com.vforum.model.LoginModel;
 import com.vforum.model.PostModel;
-import com.vforum.model.RegisterEmployeeModel;
 import com.vforum.model.EmployeeModel;
 
 public class AdminView {
@@ -40,7 +38,11 @@ public void mainAdminView(LoginModel loginModel) {
 	}
 }
 		public void showQuestionDeleteSuccess(LoginModel loginModel,int postId) {
-			System.out.println("\n deleted successfully ");
+			System.out.println("\n deleted successfully for --- "+postId);
+			mainAdminView(loginModel);
+			}
+		public void showQuestionDeleteUnSuccess(LoginModel loginModel,int postId) {
+			System.out.println("\n question deletion failed for --- "+postId);
 			mainAdminView(loginModel);
 			}
 	public void showEmployees(List<EmployeeModel> model,LoginModel loginModel){

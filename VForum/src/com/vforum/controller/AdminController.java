@@ -30,6 +30,11 @@ public class AdminController {
 	}
 	public void deleteQuestion(LoginModel loginModel,int postId) {
 		String outcome=adminService.deleteQuestion(postId);
-		adminView.showQuestionDeleteSuccess(loginModel,postId);
+		if(outcome.contentEquals("success")) {
+		adminView.showQuestionDeleteSuccess(loginModel,postId); 
+		}
+		else {
+			adminView.showQuestionDeleteUnSuccess(loginModel,postId); 
+		}
 	}
 }
