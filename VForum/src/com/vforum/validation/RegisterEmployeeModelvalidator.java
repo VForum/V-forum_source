@@ -4,14 +4,14 @@ import java.util.ArrayList;
 import java.util.List;
 
 import com.vforum.model.RegisterEmployeeModel;
-
+import java.util.regex.*;
 public class RegisterEmployeeModelvalidator {
 	
 public boolean validate(RegisterEmployeeModel model) {
 		
 		boolean result=false;
 		
-		if(validString(model.getFirstName()) && validString(model.getLastName()) && validEmail(model.getEmail())){
+		if(validString(model.getFirstName()) && validNumber(model.getPhoneNumber()) && validString(model.getLastName()) && validEmail(model.getEmail())){
 			result=true;
 		}
 		
@@ -39,12 +39,16 @@ public boolean validate(RegisterEmployeeModel model) {
 		return result;
 	}
 
-	public boolean validNumber(int number) {
+	public boolean validNumber(String number) {
 		boolean result=false;
-		String data=String.valueOf(number);
+		/*String data=number;
 		if(data.matches(".*[0-9]")) {
-			result=true;
-		}
+			result=true;*/
+		 Pattern p = Pattern.compile("(0/91)?[7-9][0-9]{9}");
+	        Matcher m = p.matcher(number); 
+	        if(m.find() && m.group().equals(number)) {
+	        result=true;
+	}
 		return result;
 	}
 	public boolean validEmail(String email) {

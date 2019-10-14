@@ -23,7 +23,6 @@ public class MainView {
 		System.out.println("*****************************");
 		System.out.println("*=>1. Admin                 *");
 		System.out.println("*=>2. Employee              *");
-		System.out.println("*=>3. Exit                  *");
 		System.out.println("*****************************");
 		try(Scanner scanner=new Scanner(System.in);){
 			
@@ -173,7 +172,7 @@ public void registerEmployeeForm() {
 			throw new ValidationException("[!ERROR:Invalid First Name]");
 			}catch(ValidationException e) {
 				System.out.println(e.getMessage());
-				mainMenu();
+				registerEmployeeForm();
 			}
 		
 		
@@ -186,7 +185,7 @@ public void registerEmployeeForm() {
 			throw new ValidationException("[!ERROR:Invalid Last Name]");
 			}catch(ValidationException e) {
 				System.out.println(e.getMessage());
-				mainMenu();
+				registerEmployeeForm();
 			}
 		
 		
@@ -199,18 +198,41 @@ public void registerEmployeeForm() {
 			throw new ValidationException("!ERROR:Invalid Email");
 			}catch(ValidationException e) {
 				System.out.println(e.getMessage());
-				mainMenu();
+				registerEmployeeForm();
 			}
 		System.out.print("PhoneNumber:");
 		String phoneNumber=scanner.next();
+		boolean validNumber=validator.validNumber(phoneNumber);
+		if(!validNumber)
+			try {
+			throw new ValidationException("!ERROR:Invalid PhoneNumber");
+			}catch(ValidationException e) {
+				System.out.println(e.getMessage());
+				registerEmployeeForm();
+			}
+		
 		System.out.print("Designation :");
 		String designation=scanner.next();
-		System.out.print("Date of Birth:");
+		System.out.print("Date of Birth(dd/mm/yyyy):");
 		String dob=scanner.next();
-		
+		boolean validDOB=validator.validDOB(dob);
+		if(!validDOB)
+			try {
+			throw new ValidationException("!ERROR:Invalid DOB");
+			}catch(ValidationException e) {
+				System.out.println(e.getMessage());
+				registerEmployeeForm();
+			}
 		System.out.print("Password :");
 		String password=scanner.next();
-		
+		boolean validPassword=validator.validPassword(password);
+		if(!validPassword)
+			try {
+			throw new ValidationException("!ERROR:Password must bt atleast 8 characters long");
+			}catch(ValidationException e) {
+				System.out.println(e.getMessage());
+				registerEmployeeForm();
+			}
 		RegisterEmployeeModel model=new RegisterEmployeeModel();
 		model.setEmployeeUid(employeeUid);
 		model.setFirstName(firstName);
@@ -224,7 +246,7 @@ public void registerEmployeeForm() {
 		EmployeeController controller=new EmployeeController();
 		controller.handleRegisterEmployee(model);
 		
-	   mainMenu();
+	   viewEmployeeMainMenu();
 	}catch(Exception e) {
 		
 	}	
