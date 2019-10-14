@@ -8,9 +8,7 @@ import com.vforum.dao.EmployeesDAO;
 import com.vforum.entities.Employees;
 import com.vforum.entities.Posts;
 import com.vforum.helper.FactoryEmployeeDB;
-import com.vforum.model.LoginModel;
 import com.vforum.model.PostModel;
-import com.vforum.model.PostQuestionModel;
 import com.vforum.model.RegisterEmployeeModel;
 
 public class EmployeesServiceImpl implements EmployeesService{

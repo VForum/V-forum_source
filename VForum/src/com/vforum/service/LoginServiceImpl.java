@@ -3,10 +3,8 @@ package com.vforum.service;
 import java.sql.SQLException;
 
 import com.vforum.dao.LoginDAO;
-import com.vforum.exception.UserException;
 import com.vforum.helper.FactoryEmployeeDB;
 import com.vforum.model.LoginModel;
-import com.vforum.view.EmployeesView;
 
 public class LoginServiceImpl implements LoginService{
 	

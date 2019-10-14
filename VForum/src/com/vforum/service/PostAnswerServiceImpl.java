@@ -3,9 +3,7 @@ package com.vforum.service;
 import java.sql.SQLException;
 
 import com.vforum.dao.PostAnswerDAO;
-import com.vforum.dao.PostQuestionDAO;
 import com.vforum.entities.Answers;
-import com.vforum.entities.Posts;
 import com.vforum.helper.FactoryEmployeeDB;
 import com.vforum.model.LoginModel;
 import com.vforum.model.PostAnswerModel;

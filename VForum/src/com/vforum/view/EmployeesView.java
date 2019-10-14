@@ -1,12 +1,9 @@
 package com.vforum.view;
 
 import java.io.BufferedReader;
-import java.io.IOException;
 import java.io.InputStreamReader;
 import java.util.List;
 import java.util.Scanner;
-
-import com.vforum.controller.FrontController;
 import com.vforum.controller.PostAnswerController;
 import com.vforum.model.LoginModel;
 import com.vforum.model.PostAnswerModel;
@@ -21,10 +18,10 @@ public class EmployeesView {
 
 	public void showQuestions(List<PostModel> model,LoginModel loginModel){
 		System.out.println("=====================================================================================================================");
-		System.out.format("%10s%15s%25s%45s\n","UserName","PostId","Question","Category");
+		System.out.format("%10s%15s%25s%40s\n","UserName","PostId","Question","Category");
 		System.out.println("=====================================================================================================================");
 		for(PostModel models:model) {
-			System.out.format("%9s%12d%45s%30s\n",models.getUserId(),models.getPostId(),models.getPost(),models.getCategory());;
+			System.out.format("%9s%12d%30s%40s\n",models.getUserId(),models.getPostId(),models.getPost(),models.getCategory());;
 			System.out.println("\n");
 		}
 		replyMenu(loginModel);

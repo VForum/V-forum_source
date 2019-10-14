@@ -7,12 +7,9 @@ import java.sql.SQLException;
 import java.sql.Statement;
 import java.util.ArrayList;
 import java.util.List;
-
 import com.vforum.entities.Employees;
 import com.vforum.entities.Posts;
 import com.vforum.integrate.ConnectionManager;
-import com.vforum.model.LoginModel;
-//import com.vforum.model.ViewProfileModel;
 
 public class EmployeesDAOImpl implements EmployeesDAO {
 

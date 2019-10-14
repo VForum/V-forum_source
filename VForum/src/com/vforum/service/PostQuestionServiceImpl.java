@@ -5,7 +5,6 @@ import java.sql.SQLException;
 import com.vforum.dao.PostQuestionDAO;
 import com.vforum.entities.Posts;
 import com.vforum.helper.FactoryEmployeeDB;
-import com.vforum.model.LoginModel;
 import com.vforum.model.PostQuestionModel;
 
 public class PostQuestionServiceImpl implements PostQuestionService {

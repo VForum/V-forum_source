@@ -5,9 +5,7 @@ import java.sql.SQLException;
 import com.vforum.helper.FactoryEmployeeDB;
 import com.vforum.model.LoginModel;
 import com.vforum.model.PostAnswerModel;
-import com.vforum.model.PostQuestionModel;
 import com.vforum.service.PostAnswerService;
-import com.vforum.service.PostQuestionService;
 import com.vforum.view.EmployeesView;
 
 public class PostAnswerController {
