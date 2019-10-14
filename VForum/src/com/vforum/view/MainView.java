@@ -18,6 +18,7 @@ import com.vforum.validation.EmployeesModelValidator;
 public class MainView {
 	
 	public void mainMenu() {
+		
 		System.out.println("\n");
 		System.out.println("\t\t\t\t***********=========*========MAIN MENU========*=======**********\n\n");
 		System.out.println("*****************************");
