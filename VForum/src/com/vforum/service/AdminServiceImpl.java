@@ -10,7 +10,7 @@ import com.vforum.entities.Posts;
 import com.vforum.helper.FactoryAdminDB;
 import com.vforum.model.EmployeeModel;
 import com.vforum.model.PostModel;
-import com.vforum.model.RegisterEmployeeModel;
+
 
 public class AdminServiceImpl implements AdminService {
 private AdminDAO adminDAO;

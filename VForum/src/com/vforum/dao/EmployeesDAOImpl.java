@@ -7,6 +7,8 @@ import java.sql.SQLException;
 import java.sql.Statement;
 import java.util.ArrayList;
 import java.util.List;
+
+import com.vforum.entities.Answers;
 import com.vforum.entities.Employees;
 import com.vforum.entities.Posts;
 import com.vforum.integrate.ConnectionManager;
@@ -86,5 +88,25 @@ public class EmployeesDAOImpl implements EmployeesDAO {
 		ConnectionManager.closeConnection();
 		return employeesList;
 	}
+
+	@Override
+	public List<Answers> getAllAnswers(LoginModel loginModel, int postId) throws ClassNotFoundException, SQLException {
+		Connection connection=ConnectionManager.openConnection();
+		PreparedStatement answers=
+				connection.prepareStatement("select * from answers where a_post_id=?");
+				answers.setInt(1,postId);
+		ResultSet resultSet=answers.executeQuery();
+		
+		List<Answers> answerList=new ArrayList<Answers>();
+		while(resultSet.next()) {
+			Answers answer=new Answers();
+			answer.setAnswer(resultSet.getString("answer"));
+			answer.setEmpUserId(resultSet.getString("a_username"));
+			answerList.add(answer);
+		}
+		ConnectionManager.closeConnection();
+
+		return answerList;
+}
 }
 

@@ -5,7 +5,9 @@ import java.io.InputStreamReader;
 import java.util.List;
 import java.util.Scanner;
 
+import com.vforum.controller.EmployeeController;
 import com.vforum.controller.PostAnswerController;
+import com.vforum.model.AnswerModel;
 import com.vforum.model.EmployeeModel;
 import com.vforum.model.LoginModel;
 import com.vforum.model.PostAnswerModel;
@@ -17,6 +19,7 @@ public class EmployeesView {
 	
 
 	private MainView mainView=new MainView();
+	
 
 	public void showQuestions(List<PostModel> model,LoginModel loginModel){
 		System.out.println("=====================================================================================================================");
@@ -26,6 +29,19 @@ public class EmployeesView {
 			System.out.format("%9s%12d%30s%40s\n",models.getUserId(),models.getPostId(),models.getPost(),models.getCategory());;
 			System.out.println("\n");
 		}
+		replyMenu(loginModel);
+	}
+	public void showAnswers(List<AnswerModel> model,LoginModel loginModel){
+		System.out.println("=====================================================");
+		System.out.format("%10s%30s\n","UserName","Answer");
+		System.out.println("=====================================================");
+		for(AnswerModel models:model) {
+			System.out.format("%10s%30s\n",models.getUsername(),models.getAnswer());
+			System.out.println("");
+		}
+	}
+	public void showQuestionsWithAnswers(List<PostModel> model,LoginModel loginModel){
+		
 		replyMenu(loginModel);
 	}
 	public void showProfile(List<EmployeeModel> model,LoginModel loginModel){
@@ -43,7 +59,7 @@ public class EmployeesView {
 	public void replyMenu(LoginModel loginModel) {
 		System.out.println("***************************");
 		System.out.println("*=>1. Reply to Question   *");
-		System.out.println("*=>2. Report Question     *");
+		System.out.println("*=>2. View Answers        *");
 		System.out.println("*=>3. Back to Menu        *");
 		System.out.println("***************************");
 		try(Scanner scanner=new Scanner(System.in);){
@@ -55,7 +71,7 @@ public class EmployeesView {
 			
 			case 1:postAnswerMenu(loginModel);
 			       break;
-			case 2:
+			case 2:viewAnswerMenu(loginModel);
 				   break;
 			case 3:mainView.employeeMenu(loginModel);
 				   break;
@@ -67,6 +83,20 @@ public class EmployeesView {
 		}catch(Exception e) {
 			
 			System.out.println("!ERROR[SELECT APPROPRIATE OPTION] replyMenu catch");
+		}
+	}
+	public void viewAnswerMenu(LoginModel loginModel) {
+		try(InputStreamReader reader=
+				new InputStreamReader(System.in);
+				BufferedReader buffer=new BufferedReader(reader);)
+			{
+				System.out.print("Enter Post ID:");
+				int postId=Integer.parseInt(buffer.readLine()); 
+				EmployeeController employeecontroller=new EmployeeController();
+				employeecontroller.viewAnswers(loginModel,postId);
+			}
+		catch(Exception e) {
+			e.printStackTrace();
 		}
 	}
 	public void postAnswerMenu(LoginModel loginModel) {

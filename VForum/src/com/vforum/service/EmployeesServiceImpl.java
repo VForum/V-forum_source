@@ -5,9 +5,11 @@ import java.util.ArrayList;
 import java.util.List;
 
 import com.vforum.dao.EmployeesDAO;
+import com.vforum.entities.Answers;
 import com.vforum.entities.Employees;
 import com.vforum.entities.Posts;
 import com.vforum.helper.FactoryEmployeeDB;
+import com.vforum.model.AnswerModel;
 import com.vforum.model.EmployeeModel;
 import com.vforum.model.LoginModel;
 import com.vforum.model.PostModel;
@@ -98,5 +100,27 @@ public class EmployeesServiceImpl implements EmployeesService{
 		}
 		
 		return profileModelList;
+	}
+	@Override
+	public List<AnswerModel> retrieveAnswers(LoginModel loginModel,int postId) {
+		List<AnswerModel> answerModelList=new ArrayList<>();
+		try {
+			List<Answers> answersList=employeesDAO.getAllAnswers(loginModel,postId);
+			for(Answers answers:answersList) {
+				
+				AnswerModel answerModel=new AnswerModel();
+				answerModel.setAnswer(answers.getAnswer());
+				answerModel.setUsername(answers.getEmpUserId());
+				answerModelList.add(answerModel);
+				
+			}
+			
+		} catch (ClassNotFoundException | SQLException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+		
+		return answerModelList;
+	
 	}
 	}

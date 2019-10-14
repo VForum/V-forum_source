@@ -109,10 +109,11 @@ public void employeeMenu(LoginModel loginModel) {
 	){
 	System.out.println("========== EMPLOYEE VIEW ========\n");
 	System.out.println("****************************");
-	System.out.println("*1.view profile            *");
-	System.out.println("*2.post question           *");
-	System.out.println("*3.view questions          *");
-	System.out.println("*4:logout                  *");
+	System.out.println("*1.view profile             *");
+	System.out.println("*2.post question            *");
+	System.out.println("*3.view questions           *");
+	System.out.println("*4.view QuestionsWithAnswers*");
+	System.out.println("*5.logout*");
 	System.out.println("****************************");
 	System.out.print("Enter choice:");
 	int option=scanner.nextInt();
@@ -124,7 +125,9 @@ public void employeeMenu(LoginModel loginModel) {
 			break;
 	case 3:employeeController.viewQuestions(loginModel);
 			break;
-	case 4:viewEmployeeMainMenu();
+	//case 4:employeeController.viewQuestionsWithAnswers(loginModel);
+		//	break;
+	case 5:viewEmployeeMainMenu();
 			break;
 	default:System.out.println("!ERROR[SELECT APPROPRIATE OPTION] employeeMenu");
 		employeeMenu(loginModel);
