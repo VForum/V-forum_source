@@ -10,4 +10,5 @@ public interface AdminDAO {
 
 	public  List<Employees> getEmployeeDetails() throws ClassNotFoundException,SQLException;
 	public List<Posts> getAllQuestions()throws ClassNotFoundException, SQLException;
+	public boolean deleteQuestion(int postId)throws ClassNotFoundException, SQLException;
 }

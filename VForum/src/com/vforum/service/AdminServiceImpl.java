@@ -72,4 +72,21 @@ private AdminDAO adminDAO;
 		
 		return postModelList;
 	}
+
+	@Override
+	public String deleteQuestion(int postId) {
+		
+		String result="fail";
+		try {
+			boolean stored=adminDAO.deleteQuestion(postId);
+			if(stored)
+				result="success";
+			
+		} catch (ClassNotFoundException | SQLException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+			System.out.println("!ERROR[deletion failed because of internal issues...]");
+		}
+		return result;
+}
 }

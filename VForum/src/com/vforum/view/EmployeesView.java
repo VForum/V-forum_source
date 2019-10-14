@@ -39,6 +39,7 @@ public class EmployeesView {
 			System.out.format("%10s%30s\n",models.getUsername(),models.getAnswer());
 			System.out.println("");
 		}
+		replyMenu(loginModel);
 	}
 	public void showQuestionsWithAnswers(List<PostModel> model,LoginModel loginModel){
 		

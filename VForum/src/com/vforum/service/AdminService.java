@@ -9,4 +9,5 @@ public interface AdminService {
 
 	public List<EmployeeModel> retrieveEmployees();
 	public List<PostModel> retrievePosts();
+	public String deleteQuestion(int postId);
 }

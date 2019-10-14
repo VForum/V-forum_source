@@ -28,4 +28,8 @@ public class AdminController {
 		List<PostModel> models=adminService.retrievePosts();
 		adminView.showQuestions(models,loginModel);
 	}
+	public void deleteQuestion(LoginModel loginModel,int postId) {
+		String outcome=adminService.deleteQuestion(postId);
+		adminView.showQuestionDeleteSuccess(loginModel,postId);
+	}
 }

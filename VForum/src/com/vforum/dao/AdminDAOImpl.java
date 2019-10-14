@@ -1,6 +1,7 @@
 package com.vforum.dao;
 
 import java.sql.Connection;
+import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.sql.Statement;
@@ -56,6 +57,20 @@ public class AdminDAOImpl implements AdminDAO{
 		ConnectionManager.closeConnection();
 
 		return postList;
+	}
+	@Override
+	public boolean deleteQuestion(int postId) throws ClassNotFoundException, SQLException {
+
+		Connection connection=ConnectionManager.openConnection();
+		PreparedStatement statement=
+				connection.prepareStatement("delete from questions where post_id=?");
+		statement.setInt(1,postId);
+		int rows=statement.executeUpdate();
+		ConnectionManager.closeConnection();
+		if(rows>0)
+			return true;
+		else
+		return false;
 	}
 }
 
