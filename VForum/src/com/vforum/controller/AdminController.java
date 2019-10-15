@@ -26,26 +26,28 @@ public class AdminController {
 	}
 	public void viewEmployees(LoginModel loginModel) {
 		
-		logger.info("-----viewEmployees called---");
-		
-		
+		logger.info("-----In admincontroller class viewEmployees method called---");
 		List<EmployeeModel> models=adminService.retrieveEmployees();
 		adminView.showEmployees(models,loginModel);
-		logger.info("-----viewEmployees completed---");
+		logger.info("-----viewEmployees method completed---");
 	}
 	public void viewQuestions(LoginModel loginModel) {
+		logger.info("-----In admincontroller class viewQuestions method called---");
 		List<PostModel> models=adminService.retrievePosts();
-		logger.info("models contains:"+models);
+		logger.info("In viewQuestions method the models contains:"+models);
 		adminView.showQuestions(models,loginModel);
+		logger.info("-----In admincontroller viewQuestions method completed---");
 	}
 	public void deleteQuestion(LoginModel loginModel,int postId) {
+		logger.info("-----In admincontroller class deleteQuestion method called---");
 		String outcome=adminService.deleteQuestion(postId);
-		logger.info("delete outcome:"+outcome);
+		logger.info("In deleteQuestion the value of outcome is :"+outcome);
 		if(outcome.contentEquals("success")) {
 		adminView.showQuestionDeleteSuccess(loginModel,postId); 
 		}
 		else {
 			adminView.showQuestionDeleteUnSuccess(loginModel,postId); 
 		}
+		logger.info("-----In admincontroller deleteQuestion method completed---");
 	}
 }

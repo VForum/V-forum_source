@@ -4,6 +4,8 @@ import java.sql.SQLException;
 import java.util.ArrayList;
 import java.util.List;
 
+import org.apache.log4j.Logger;
+
 import com.vforum.dao.EmployeesDAO;
 import com.vforum.entities.Answers;
 import com.vforum.entities.Employees;
@@ -17,7 +19,7 @@ import com.vforum.model.RegisterEmployeeModel;
 
 public class EmployeesServiceImpl implements EmployeesService{
 	private EmployeesDAO employeesDAO;
-	
+	Logger logger=Logger.getLogger(EmployeesServiceImpl.class.getName());
 	public EmployeesServiceImpl() {
 		this.employeesDAO=FactoryEmployeeDB.createEmployeesDAO();
 		
@@ -25,7 +27,7 @@ public class EmployeesServiceImpl implements EmployeesService{
 	@Override
 	public String registerEmployee(RegisterEmployeeModel model) {
 		// TODO Auto-generated method stub
-		
+		logger.info("---- In EmployeesServiceImpl registerEmployee method started ---- ");
 		Employees employees=new Employees();
 		employees.setEmployeeUid(model.getEmployeeUid());
 		employees.setFirstName(model.getFirstName());
@@ -47,12 +49,13 @@ public class EmployeesServiceImpl implements EmployeesService{
 			e.printStackTrace();
 			System.out.println("!ERROR[Registration failed because of internal issues...]");
 		}
+		logger.info("---- In EmployeesServiceImpl registerEmployee method completed ---- ");
 		return result;
 	}
 	@Override
 	public List<PostModel> retrievePosts() {
 		// TODO Auto-generated method stub
-		
+		logger.info("---- In EmployeesServiceImpl retrievePosts method started ---- ");
 		List<PostModel> postModelList=new ArrayList<>();
 		try {
 			List<Posts> postsList=employeesDAO.getAllQuestions();
@@ -66,17 +69,19 @@ public class EmployeesServiceImpl implements EmployeesService{
 				postModelList.add(postModel);
 				
 			}
+			logger.info("---- The data of post model is added to the postModelList---- ");
 			
 		} catch (ClassNotFoundException | SQLException e) {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
 		}
-		
+		logger.info("---- In EmployeesServiceImpl retrievePosts method completed ---- ");
 		return postModelList;
 	}
 	@Override
 	public List<EmployeeModel> getProfile(LoginModel loginModel) {
 		// TODO Auto-generated method stub
+		logger.info("---- In EmployeesServiceImpl getProfile method started ---- ");
 		List<EmployeeModel> profileModelList=new ArrayList<>();
 		try {
 			List<Employees> profileList=employeesDAO.getProfile(loginModel);
@@ -93,16 +98,18 @@ public class EmployeesServiceImpl implements EmployeesService{
 				profileModelList.add(employeesModel);
 				
 			}
+			logger.info("---- The data of employees model is added to the profileModelList---- ");
 			
 		} catch (ClassNotFoundException | SQLException e) {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
 		}
-		
+		logger.info("---- In EmployeesServiceImpl getProfile method completed ---- ");
 		return profileModelList;
 	}
 	@Override
 	public List<AnswerModel> retrieveAnswers(LoginModel loginModel,int postId) {
+		logger.info("---- In EmployeesServiceImpl retrieveAnswers method started ---- ");
 		List<AnswerModel> answerModelList=new ArrayList<>();
 		try {
 			List<Answers> answersList=employeesDAO.getAllAnswers(loginModel,postId);
@@ -114,12 +121,13 @@ public class EmployeesServiceImpl implements EmployeesService{
 				answerModelList.add(answerModel);
 				
 			}
+			logger.info("---- The data of answer model is added to the answerModelList---- ");
 			
 		} catch (ClassNotFoundException | SQLException e) {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
 		}
-		
+		logger.info("---- In EmployeesServiceImpl retrieveAnswers method completed ---- ");
 		return answerModelList;
 	
 	}

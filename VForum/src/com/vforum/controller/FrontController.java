@@ -2,6 +2,8 @@ package com.vforum.controller;
 
 import java.sql.SQLException;
 
+import org.apache.log4j.Logger;
+
 import com.vforum.helper.FactoryEmployeeDB;
 import com.vforum.model.LoginModel;
 import com.vforum.service.LoginService;
@@ -10,7 +12,7 @@ import com.vforum.view.ErrorView;
 import com.vforum.view.MainView;
 
 public class FrontController {
-
+	Logger logger=Logger.getLogger(FrontController.class.getName());
 	private LoginService loginService;
 	MainView mainView=new MainView();
 	AdminView adminView=new AdminView();
@@ -21,13 +23,13 @@ public class FrontController {
 	}
 	
 	public void userAuthentication(String userId,String password)throws ClassNotFoundException,SQLException {
-		
+		logger.info("-----In Frontcontroller class userAuthentication method called---");
 		LoginModel loginModel=new LoginModel();
 		loginModel.setUserId(userId);
 		loginModel.setPassword(password);
 		
 			String outcome=loginService.userAuthenticationService(loginModel);
-	
+			logger.info("In userAuthentication the value of outcome in Front Controller class is :"+outcome);
 			if(outcome.contentEquals("ADMIN")){
 			adminView.mainAdminView(loginModel);
 			}
@@ -35,7 +37,9 @@ public class FrontController {
 				mainView.employeeMenu(loginModel);
 			}
 		else {
+			logger.error("Authentication failed");
 			errorView.authenticationError();
 		}
+			logger.info("-----In Frontcontroller class userAuthentication method completed---");
 	}	
 }

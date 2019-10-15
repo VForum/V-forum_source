@@ -40,16 +40,13 @@ public boolean validate(RegisterEmployeeModel model) {
 	}
 
 	public boolean validNumber(String number) {
-		boolean result=false;
-		/*String data=number;
-		if(data.matches(".*[0-9]")) {
-			result=true;*/
-		 Pattern p = Pattern.compile("(0/91)?[7-9][0-9]{9}");
+			boolean result=false;
+			Pattern p = Pattern.compile("(0/91)?[7-9][0-9]{9}");
 	        Matcher m = p.matcher(number); 
 	        if(m.find() && m.group().equals(number)) {
 	        result=true;
 	}
-		return result;
+	        return result;
 	}
 	public boolean validEmail(String email) {
 		boolean result=false;

@@ -4,6 +4,8 @@ import java.sql.SQLException;
 import java.util.ArrayList;
 import java.util.List;
 
+import org.apache.log4j.Logger;
+
 import com.vforum.dao.AdminDAO;
 import com.vforum.entities.Employees;
 import com.vforum.entities.Posts;
@@ -13,8 +15,8 @@ import com.vforum.model.PostModel;
 
 
 public class AdminServiceImpl implements AdminService {
-private AdminDAO adminDAO;
-
+	private AdminDAO adminDAO;
+	Logger logger=Logger.getLogger(AdminServiceImpl.class.getName());
 	
 	public AdminServiceImpl() {
 		this.adminDAO=FactoryAdminDB.createAdminDAO();
@@ -24,6 +26,7 @@ private AdminDAO adminDAO;
 	@Override
 	public List<EmployeeModel> retrieveEmployees() {
 		// TODO Auto-generated method stub
+		logger.info("---- In AdminServiceImpl retrieveEmployees method started ---- ");
 		List<EmployeeModel> employeesModelList=new ArrayList<>();
 		
 			List<Employees> employeesList;
@@ -45,12 +48,13 @@ private AdminDAO adminDAO;
 			} catch (ClassNotFoundException | SQLException e) {
 				e.printStackTrace();
 			}
+			logger.info("---- In AdminServiceImpl retrieveEmployees method completed ---- ");
 		return employeesModelList;
 	}
 	@Override
 	public List<PostModel> retrievePosts() {
 		// TODO Auto-generated method stub
-		
+		logger.info("---- In AdminServiceImpl retrievePosts method started ---- ");
 		List<PostModel> postModelList=new ArrayList<>();
 		try {
 			List<Posts> postsList=adminDAO.getAllQuestions();
@@ -69,13 +73,13 @@ private AdminDAO adminDAO;
 			// TODO Auto-generated catch block
 			e.printStackTrace();
 		}
-		
+		logger.info("---- In AdminServiceImpl retrievePosts method completed ---- ");
 		return postModelList;
 	}
 
 	@Override
 	public String deleteQuestion(int postId) {
-		
+		logger.info("---- In AdminServiceImpl deleteQuestion method started ---- ");
 		String result="fail";
 		try {
 			boolean stored=adminDAO.deleteQuestion(postId);
@@ -87,6 +91,7 @@ private AdminDAO adminDAO;
 			e.printStackTrace();
 			System.out.println("!ERROR[deletion failed because of internal issues...]");
 		}
+		logger.info("---- In AdminServiceImpl deleteQuestion method completed ---- ");
 		return result;
 }
 }

@@ -5,6 +5,8 @@ import java.io.InputStreamReader;
 import java.util.List;
 import java.util.Scanner;
 
+import org.apache.log4j.Logger;
+
 import com.vforum.controller.EmployeeController;
 import com.vforum.controller.PostAnswerController;
 import com.vforum.model.AnswerModel;
@@ -17,11 +19,12 @@ import com.vforum.model.RegisterEmployeeModel;
 
 public class EmployeesView {
 	
-
+	Logger logger=Logger.getLogger(EmployeesView.class.getName());
 	private MainView mainView=new MainView();
 	
 
 	public void showQuestions(List<PostModel> model,LoginModel loginModel){
+		logger.info("-----In EmployeesView class the showQuestions method is called---");
 		System.out.println("=====================================================================================================================");
 		System.out.format("%10s%15s%25s%40s\n","UserName","PostId","Question","Category");
 		System.out.println("=====================================================================================================================");
@@ -29,9 +32,11 @@ public class EmployeesView {
 			System.out.format("%9s%12d%30s%40s\n",models.getUserId(),models.getPostId(),models.getPost(),models.getCategory());;
 			System.out.println("\n");
 		}
+		logger.info("-----In EmployeesView class the showQuestions method is completed---");
 		replyMenu(loginModel);
 	}
 	public void showAnswers(List<AnswerModel> model,LoginModel loginModel){
+		logger.info("-----In EmployeesView class the showAnswers method is called---");
 		System.out.println("=====================================================");
 		System.out.format("%10s%30s\n","UserName","Answer");
 		System.out.println("=====================================================");
@@ -39,25 +44,25 @@ public class EmployeesView {
 			System.out.format("%10s%30s\n",models.getUsername(),models.getAnswer());
 			System.out.println("");
 		}
-		replyMenu(loginModel);
-	}
-	public void showQuestionsWithAnswers(List<PostModel> model,LoginModel loginModel){
-		
+		logger.info("-----In EmployeesView class the showAnswers method is completed---");
 		replyMenu(loginModel);
 	}
 	public void showProfile(List<EmployeeModel> model,LoginModel loginModel){
+		logger.info("-----In EmployeesView class the showProfile method is called---");
 		System.out.println("=====================================================================================================================");
 		System.out.format("%10s%15s%15s%15s%20s%20s%20s\n","UserName","FirstName","LastName","Email","PhoneNumber","Desgination","DOB");
 		System.out.println("=====================================================================================================================");
 		for(EmployeeModel models:model) {
 		System.out.format("%5s,%12s,%15s,%15s,%15s,%15s%15s\n",models.getEmployeeUid(),models.getFirstName(),models.getLastName(),models.getEmail(),models.getPhoneNumber(),models.getDesignation(),models.getDob());
 		System.out.println("\n");
-	}
+		}
+		logger.info("-----In EmployeesView class the showProfile method is completed---");
 		mainView.employeeMenu(loginModel);
 		}
 		
 	
 	public void replyMenu(LoginModel loginModel) {
+		logger.info("-----In EmployeesView class the replyMenu method is called---");
 		System.out.println("***************************");
 		System.out.println("*=>1. Reply to Question   *");
 		System.out.println("*=>2. View Answers        *");
@@ -87,6 +92,7 @@ public class EmployeesView {
 		}
 	}
 	public void viewAnswerMenu(LoginModel loginModel) {
+		logger.info("-----In EmployeesView class the viewAnswerMenu method is called---");
 		try(InputStreamReader reader=
 				new InputStreamReader(System.in);
 				BufferedReader buffer=new BufferedReader(reader);)
@@ -101,7 +107,7 @@ public class EmployeesView {
 		}
 	}
 	public void postAnswerMenu(LoginModel loginModel) {
-		
+		logger.info("-----In EmployeesView class the postAnswerMenu method is called---");
 		try(InputStreamReader reader=
 				new InputStreamReader(System.in);
 				BufferedReader buffer=new BufferedReader(reader);)
@@ -148,8 +154,8 @@ public class EmployeesView {
 		System.out.println("\n Posting of answer unsuccessful");
 		mainView.employeeMenu(loginModel);
 	}
-	public void validationFailedError() {
-		  System.out.println("Data validation failed!!");
+	public void registrationFailedError() {
+		  System.out.println("Employee registration failed!!");
 	  }
 	public void loginFailedError() {
 		  System.out.println("login failed!!");

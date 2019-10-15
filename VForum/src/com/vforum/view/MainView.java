@@ -6,6 +6,8 @@ import java.io.InputStreamReader;
 import java.sql.SQLException;
 import java.util.Scanner;
 
+import org.apache.log4j.Logger;
+
 import com.vforum.controller.EmployeeController;
 import com.vforum.controller.FrontController;
 import com.vforum.controller.PostQuestionController;
@@ -16,9 +18,9 @@ import com.vforum.model.RegisterEmployeeModel;
 import com.vforum.validation.EmployeesModelValidator;
 
 public class MainView {
-	
+	Logger logger=Logger.getLogger(MainView.class.getName());
 	public void mainMenu() {
-		
+		logger.info("-----In MainView class the mainMenu method is called---");
 		System.out.println("\n");
 		System.out.println("\t\t\t\t***********=========*========MAIN MENU========*=======**********\n\n");
 		System.out.println("*****************************");
@@ -49,7 +51,7 @@ public class MainView {
 		
 	}
 	public void viewLoginMenu() throws ClassNotFoundException, SQLException{
-
+		logger.info("-----In MainView class the viewLoginMenu method is called---");
 		try(
 				InputStreamReader reader=
 				new InputStreamReader(System.in);
@@ -74,7 +76,7 @@ public class MainView {
 		
 	}
 public void viewEmployeeMainMenu() {
-		
+	logger.info("-----In MainView class the viewEmployeeMainMenu method is called---");
 		try(
 				Scanner scanner=new Scanner(System.in);
 		){
@@ -105,6 +107,7 @@ public void viewEmployeeMainMenu() {
 
 	}
 public void employeeMenu(LoginModel loginModel) {
+	logger.info("-----In MainView class the employeeMenu method is called---");
 	try(
 			Scanner scanner=new Scanner(System.in);
 	){
@@ -113,7 +116,7 @@ public void employeeMenu(LoginModel loginModel) {
 	System.out.println("*1.view profile             *");
 	System.out.println("*2.post question            *");
 	System.out.println("*3.view questions           *");
-	System.out.println("*4.logout*");
+	System.out.println("*4.logout					*");
 	System.out.println("****************************");
 	System.out.print("Enter choice:");
 	int option=scanner.nextInt();
@@ -136,6 +139,7 @@ public void employeeMenu(LoginModel loginModel) {
 	}
 }
 public void postQuestionForm(LoginModel loginModel) {
+	logger.info("-----In MainView class the postQuestionForm method is called---");
 	try(Scanner scanner=new Scanner(System.in);)
 	{
 		System.out.println("***************************");
@@ -150,13 +154,14 @@ public void postQuestionForm(LoginModel loginModel) {
 		postModel.setTitle(title);
 		PostQuestionController controller=new PostQuestionController();
 		controller.postQuestion(postModel,loginModel);
+		logger.info("-----In MainView class the postQuestionForm method completed---");
 	}catch(Exception e) {
 		
 	}
 	
 }
 public void registerEmployeeForm() {
-	
+	logger.info("-----In MainView class the registerEmployeeForm method is called---");
 	try(Scanner scanner=new Scanner(System.in);){			
 	System.out.println("***************************");
 	System.out.println("##### REGISTRATION FORM ##### ");
@@ -166,7 +171,7 @@ public void registerEmployeeForm() {
 	EmployeesModelValidator validator=new EmployeesModelValidator();
 		System.out.print("First Name:");
 		String firstName=scanner.next();
-		
+		logger.info("validString method of EmployeesModelValidator class is called to validate firstName");
 		boolean validfirstName=validator.validString(firstName);
 		if(!validfirstName)
 			try {
@@ -179,7 +184,7 @@ public void registerEmployeeForm() {
 		
 		System.out.print("Last Name:");
 		String lastName=scanner.next();
-		
+		logger.info("validString method of EmployeesModelValidator class is called to validate lastName");
 		boolean validLastName=validator.validString(lastName);
 		if(!validLastName)
 			try {
@@ -192,7 +197,7 @@ public void registerEmployeeForm() {
 		
 		System.out.print("Email:");
 		String email=scanner.next();
-		
+		logger.info("validEmail method of EmployeesModelValidator class is called to validate Email");
 		boolean validemail=validator.validEmail(email);
 		if(!validemail)
 			try {
@@ -203,6 +208,7 @@ public void registerEmployeeForm() {
 			}
 		System.out.print("PhoneNumber:");
 		String phoneNumber=scanner.next();
+		logger.info("validNumber method of EmployeesModelValidator class is called to validate phoneNumber");
 		boolean validNumber=validator.validNumber(phoneNumber);
 		if(!validNumber)
 			try {
@@ -216,6 +222,7 @@ public void registerEmployeeForm() {
 		String designation=scanner.next();
 		System.out.print("Date of Birth(dd/mm/yyyy):");
 		String dob=scanner.next();
+		logger.info("validDOB method of EmployeesModelValidator class is called to validate DOB");
 		boolean validDOB=validator.validDOB(dob);
 		if(!validDOB)
 			try {
@@ -226,6 +233,7 @@ public void registerEmployeeForm() {
 			}
 		System.out.print("Password :");
 		String password=scanner.next();
+		logger.info("validPassword method of EmployeesModelValidator class is called to validate password");
 		boolean validPassword=validator.validPassword(password);
 		if(!validPassword)
 			try {
@@ -246,7 +254,7 @@ public void registerEmployeeForm() {
 		
 		EmployeeController controller=new EmployeeController();
 		controller.handleRegisterEmployee(model);
-		
+		logger.info("-----In MainView class the registerEmployeeForm method is completed---");
 	   viewEmployeeMainMenu();
 	}catch(Exception e) {
 		

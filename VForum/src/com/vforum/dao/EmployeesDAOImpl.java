@@ -8,6 +8,8 @@ import java.sql.Statement;
 import java.util.ArrayList;
 import java.util.List;
 
+import org.apache.log4j.Logger;
+
 import com.vforum.entities.Answers;
 import com.vforum.entities.Employees;
 import com.vforum.entities.Posts;
@@ -15,11 +17,13 @@ import com.vforum.integrate.ConnectionManager;
 import com.vforum.model.LoginModel;
 
 public class EmployeesDAOImpl implements EmployeesDAO {
-
+	Logger logger=Logger.getLogger(EmployeesDAOImpl.class.getName());
 	@Override
 	public boolean storeEmployeeDetails(Employees employees) throws ClassNotFoundException, SQLException {
 		// TODO Auto-generated method stub
+		logger.info("---- In EmployeesDAOImpl storeEmployeeDetails method started ---- ");
 			Connection connection=ConnectionManager.openConnection();
+			logger.info("---- inserting employee registration data into database ---- ");
 			PreparedStatement statementEmployeesInfo=
 					connection.prepareStatement("insert into employees_info values(?,?,?,?,?,?,?)");
 			statementEmployeesInfo.setString(1,employees.getEmployeeUid());
@@ -36,7 +40,7 @@ public class EmployeesDAOImpl implements EmployeesDAO {
 			statementUserCredentials.setString(2,employees.getPassword());
 			int rows2=statementUserCredentials.executeUpdate();
 			ConnectionManager.closeConnection();
-			
+			logger.info("---- In EmployeesDAOImpl storeEmployeeDetails method completed ---- ");
 			if(rows1>0 && rows2>0)
 				return true;
 			else
@@ -46,6 +50,7 @@ public class EmployeesDAOImpl implements EmployeesDAO {
 	@Override
 	public List<Posts> getAllQuestions() throws ClassNotFoundException, SQLException {
 		// TODO Auto-generated method stub
+		logger.info("---- In EmployeesDAOImpl getAllQuestions method started ---- ");
 		Connection connection=ConnectionManager.openConnection();
 		Statement statement=connection.createStatement();
 		ResultSet resultSet=
@@ -61,13 +66,14 @@ public class EmployeesDAOImpl implements EmployeesDAO {
 			postList.add(post);
 		}
 		ConnectionManager.closeConnection();
-
+		logger.info("---- In EmployeesDAOImpl getAllQuestions method completed ---- ");
 		return postList;
 	}
 
 	@Override
 	public List<Employees> getProfile(LoginModel loginModel) throws ClassNotFoundException, SQLException {
 		// TODO Auto-generated method stub
+		logger.info("---- In EmployeesDAOImpl getProfile method started ---- ");
 		Connection connection=ConnectionManager.openConnection();
 		PreparedStatement profile=
 				connection.prepareStatement("select * from employees_info where employee_uname=?");
@@ -86,11 +92,13 @@ public class EmployeesDAOImpl implements EmployeesDAO {
 			employeesList.add(employees);
 		}
 		ConnectionManager.closeConnection();
+		logger.info("---- In EmployeesDAOImpl getProfile method completed ---- ");
 		return employeesList;
 	}
 
 	@Override
 	public List<Answers> getAllAnswers(LoginModel loginModel, int postId) throws ClassNotFoundException, SQLException {
+		logger.info("---- In EmployeesDAOImpl getAllAnswers method started ---- ");
 		Connection connection=ConnectionManager.openConnection();
 		PreparedStatement answers=
 				connection.prepareStatement("select * from answers where a_post_id=?");
@@ -105,7 +113,7 @@ public class EmployeesDAOImpl implements EmployeesDAO {
 			answerList.add(answer);
 		}
 		ConnectionManager.closeConnection();
-
+		logger.info("---- In EmployeesDAOImpl getAllAnswers method completed ---- ");
 		return answerList;
 }
 }
