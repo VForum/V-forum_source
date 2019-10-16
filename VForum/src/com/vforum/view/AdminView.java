@@ -70,7 +70,7 @@ public class AdminView {
 		System.out.format("%10s%15s%25s%40s\n","UserName","PostId","Question","Category");
 		System.out.println("=====================================================================================================================");
 		for(PostModel models:model) {
-			System.out.format("%9s%12d%30s%40s\n",models.getUserId(),models.getPostId(),models.getPost(),models.getCategory());;
+			System.out.format("%9s%12d%30s%40s\n",models.getUserId(),models.getPostId(),models.getPost(),models.getCategory());
 			System.out.println("\n");
 		}
 		logger.info("-----In AdminView class the showQuestions method is completed---");

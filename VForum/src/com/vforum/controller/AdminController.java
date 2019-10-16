@@ -1,5 +1,7 @@
 package com.vforum.controller;
-
+/**
+ * AdminController class will take input from view and calls service 
+ */
 import java.util.List;
 
 import org.apache.log4j.Logger;

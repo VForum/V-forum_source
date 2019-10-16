@@ -156,7 +156,7 @@ public void postQuestionForm(LoginModel loginModel) {
 		controller.postQuestion(postModel,loginModel);
 		logger.info("-----In MainView class the postQuestionForm method completed---");
 	}catch(Exception e) {
-		
+		e.printStackTrace();
 	}
 	
 }
@@ -257,7 +257,7 @@ public void registerEmployeeForm() {
 		logger.info("-----In MainView class the registerEmployeeForm method is completed---");
 	   viewEmployeeMainMenu();
 	}catch(Exception e) {
-		
+		e.printStackTrace();
 	}	
 }
 	
