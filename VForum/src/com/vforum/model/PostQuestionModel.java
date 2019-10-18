@@ -1,5 +1,7 @@
 package com.vforum.model;
-
+/*
+ * This is class used to storing data temporarily of posts
+ */
 public class PostQuestionModel {
 	private String userId;
 	private int postId;

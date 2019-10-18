@@ -1,5 +1,7 @@
 package com.vforum.dao;
-
+/*
+ * This interface of employees contains the function declaration of the services
+ */
 import java.sql.SQLException;
 import java.util.List;
 

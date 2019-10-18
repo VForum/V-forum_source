@@ -1,6 +1,9 @@
 package com.vforum.view;
-
+/*
+ * This class is used as an employees screen
+ */
 import java.io.BufferedReader;
+import java.io.IOException;
 import java.io.InputStreamReader;
 import java.util.List;
 import java.util.Scanner;
@@ -30,7 +33,7 @@ public class EmployeesView {
 		System.out.println("=====================================================================================================================");
 		for(PostModel models:model) {
 			System.out.format("%9s%12d%30s%40s\n",models.getUserId(),models.getPostId(),models.getPost(),models.getCategory());
-			System.out.println("\n");
+			System.out.println("");
 		}
 		logger.info("-----In EmployeesView class the showQuestions method is completed---");
 		replyMenu(loginModel);
@@ -54,7 +57,7 @@ public class EmployeesView {
 		System.out.println("=====================================================================================================================");
 		for(EmployeeModel models:model) {
 		System.out.format("%5s,%12s,%15s,%15s,%15s,%15s%15s\n",models.getEmployeeUid(),models.getFirstName(),models.getLastName(),models.getEmail(),models.getPhoneNumber(),models.getDesignation(),models.getDob());
-		System.out.println("\n");
+		System.out.println("");
 		}
 		logger.info("-----In EmployeesView class the showProfile method is completed---");
 		mainView.employeeMenu(loginModel);
@@ -127,12 +130,12 @@ public class EmployeesView {
 			}
 	}
 	
-	public void showRegistrationSuccess(RegisterEmployeeModel model) {
+	public void showRegistrationSuccess(RegisterEmployeeModel model) throws IOException {
 		System.out.println("\n Registration successful ");
 		mainView.mainMenu();
 	}
 	
-	public void showRegistrationFailure(RegisterEmployeeModel model) {
+	public void showRegistrationFailure(RegisterEmployeeModel model) throws IOException {
 		System.out.println("\n Registration unsuccessful");
 		mainView.mainMenu();
 	}

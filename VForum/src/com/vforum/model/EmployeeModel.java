@@ -1,5 +1,7 @@
 package com.vforum.model;
-
+/*
+ * This is class used to storing data temporarily of employees
+ */
 public class EmployeeModel {
 
 	private String employeeUid;
@@ -10,9 +12,6 @@ public class EmployeeModel {
 	private String designation;
 	private String dob;
 	private String password;
-	public EmployeeModel() {
-		
-	}
 	public String getEmployeeUid() {
 		return employeeUid;
 	}

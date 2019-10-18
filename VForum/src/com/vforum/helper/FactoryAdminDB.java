@@ -1,5 +1,7 @@
 package com.vforum.helper;
-
+/*
+ * This class is used for abstraction purpose
+ */
 import org.apache.log4j.Logger;
 
 import com.vforum.dao.AdminDAO;

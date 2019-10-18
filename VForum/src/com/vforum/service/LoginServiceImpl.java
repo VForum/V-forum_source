@@ -1,5 +1,7 @@
 package com.vforum.service;
-
+/*
+ * Implementation class of LoginService
+ */
 import java.sql.SQLException;
 
 import org.apache.log4j.Logger;

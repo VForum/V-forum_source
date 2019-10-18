@@ -23,8 +23,9 @@ public class LoginDAOImpl implements LoginDAO {
 		preparedStatement2.setString(1, userId);
 		preparedStatement2.setString(2, password);
 		ResultSet rs2 = preparedStatement2.executeQuery();
-		while(rs2.next()) 
-		role=rs2.getString("role");
+		preparedStatement2.close();
+		while(rs2.next()) {
+		role=rs2.getString("role");}
 		logger.info("---- In LoginDAOImpl userAuth method completed ---- ");
 		return role;
 			

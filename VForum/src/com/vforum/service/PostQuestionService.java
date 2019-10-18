@@ -1,5 +1,7 @@
 package com.vforum.service;
-
+/*
+ * Service interface for posting question
+ */
 import java.sql.SQLException;
 import com.vforum.model.PostQuestionModel;
 

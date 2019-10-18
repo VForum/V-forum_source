@@ -19,19 +19,19 @@ import com.vforum.validation.EmployeesModelValidator;
 
 public class MainView {
 	Logger logger=Logger.getLogger(MainView.class.getName());
-	public void mainMenu() {
+	public void mainMenu() throws IOException {
 		logger.info("-----In MainView class the mainMenu method is called---");
-		System.out.println("\n");
+		System.out.println("");
 		System.out.println("\t\t\t\t***********=========*========MAIN MENU========*=======**********\n\n");
 		System.out.println("*****************************");
 		System.out.println("*=>1. Admin                 *");
 		System.out.println("*=>2. Employee              *");
 		System.out.println("*****************************");
-		try(Scanner scanner=new Scanner(System.in);){
+		Scanner scanner=new Scanner(System.in);
 			
 			System.out.print("\nEnter Choice:");
 			int option=scanner.nextInt();
-			
+			scanner.close();
 			switch(option) {
 			
 			case 1:viewLoginMenu();
@@ -43,37 +43,33 @@ public class MainView {
 			        mainMenu();
 				  
 			}
-			
-		}catch(Exception e) {
-			
-			System.out.println("!ERROR[SELECT APPROPRIATE OPTION] mainMenu catch");
-		}
 		
 	}
-	public void viewLoginMenu() throws ClassNotFoundException, SQLException{
+	public void viewLoginMenu() throws IOException{
 		logger.info("-----In MainView class the viewLoginMenu method is called---");
-		try(
+		
 				InputStreamReader reader=
 				new InputStreamReader(System.in);
 					BufferedReader buffer=new BufferedReader(reader);
 					
-		     ){
+		     
 				System.out.println("***************************");	
 				System.out.print("Enter User ID:");
-				String userId=buffer.readLine().trim();
+				String userId;
+					userId = buffer.readLine();
+				
 				
 				System.out.print("Enter Password:");
-				String password=buffer.readLine().trim();
+				String password=buffer.readLine();
 				System.out.println("***************************");
 				
 				FrontController controller=new FrontController();
-				controller.userAuthentication(userId,password);
-				
-				
-			}catch(IOException e) {
-				e.printStackTrace();
-			}
-		
+				try {
+					controller.userAuthentication(userId,password);
+				} catch (ClassNotFoundException|SQLException e) {
+					// TODO Auto-generated catch block
+					e.printStackTrace();
+				} 
 	}
 public void viewEmployeeMainMenu() {
 	logger.info("-----In MainView class the viewEmployeeMainMenu method is called---");
@@ -96,8 +92,10 @@ public void viewEmployeeMainMenu() {
 				   break;
 			
 			case 3:mainMenu();
+					break;
 			default:System.out.println("!ERROR[SELECT APPROPRIATE OPTION] viewEmployeeMenu");
 	        viewEmployeeMainMenu();
+	        break;
 				  
 			}
 

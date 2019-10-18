@@ -1,4 +1,7 @@
 package com.vforum.dao;
+/*
+ * This interface postQuestion contains the function declaration of the storingQuestion
+ */
 import java.sql.SQLException;
 import com.vforum.entities.Posts;
 

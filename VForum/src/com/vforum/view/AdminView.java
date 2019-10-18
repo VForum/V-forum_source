@@ -1,5 +1,7 @@
 package com.vforum.view;
-
+/*
+ * This class is used as an admin screen
+ */
 import java.io.BufferedReader;
 import java.io.InputStreamReader;
 import java.util.List;
@@ -58,7 +60,7 @@ public class AdminView {
 		System.out.println("=====================================================================================================================");
 		for(EmployeeModel models:model) {
 		System.out.format("%5s%12s%15s%15s%15s%15s%15s\n",models.getEmployeeUid(),models.getFirstName(),models.getLastName(),models.getEmail(),models.getPhoneNumber(),models.getDesignation(),models.getDob());
-		System.out.println("\n");
+		System.out.println("");
 	}
 		logger.info("-----In AdminView class the showEmployees method is completed---");
 		mainAdminView(loginModel);
@@ -71,7 +73,7 @@ public class AdminView {
 		System.out.println("=====================================================================================================================");
 		for(PostModel models:model) {
 			System.out.format("%9s%12d%30s%40s\n",models.getUserId(),models.getPostId(),models.getPost(),models.getCategory());
-			System.out.println("\n");
+			System.out.println("");
 		}
 		logger.info("-----In AdminView class the showQuestions method is completed---");
 		deleteQuestionMenu(loginModel);

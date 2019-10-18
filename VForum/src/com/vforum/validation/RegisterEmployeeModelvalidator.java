@@ -1,5 +1,7 @@
 package com.vforum.validation;
-
+/*
+ * This class is used for validating the user input of registration
+ */
 import java.util.ArrayList;
 import java.util.List;
 

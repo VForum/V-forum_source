@@ -1,5 +1,7 @@
 package com.vforum.controller;
-
+/*
+ * this controller will pass the post answer from input to service
+ */
 import java.sql.SQLException;
 
 import org.apache.log4j.Logger;

@@ -1,5 +1,7 @@
 package com.vforum.service;
-
+/*
+ * Service interface for posting answer
+ */
 import java.sql.SQLException;
 
 import com.vforum.model.LoginModel;

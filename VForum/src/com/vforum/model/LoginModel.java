@@ -1,8 +1,9 @@
 package com.vforum.model;
-
+/*
+ * This is class used to storing data temporarily of logincredentials
+ */
 public class LoginModel {
 	
-	public LoginModel() {}
 	private String userId;
 	private String password;
 

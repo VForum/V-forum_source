@@ -1,5 +1,7 @@
 package com.vforum.integrate;
-
+/*
+ * This class we are creating database connection
+ */
 import java.sql.Connection;
 import java.sql.DriverManager;
 import java.sql.SQLException;

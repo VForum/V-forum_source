@@ -23,7 +23,6 @@ public class Employees {
 	private String dob;
 	private String password;
 	
-	public Employees() { }
 
 	public String getEmployeeUid() {
 		return employeeUid;

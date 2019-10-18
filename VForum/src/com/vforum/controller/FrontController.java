@@ -1,5 +1,8 @@
 package com.vforum.controller;
-
+/*
+ * this controller class will handle login authentication of users
+ */
+import java.io.IOException;
 import java.sql.SQLException;
 
 import org.apache.log4j.Logger;
@@ -22,7 +25,7 @@ public class FrontController {
 				FactoryEmployeeDB.createLoginService();
 	}
 	
-	public void userAuthentication(String userId,String password)throws ClassNotFoundException,SQLException {
+	public void userAuthentication(String userId,String password)throws ClassNotFoundException,SQLException, IOException {
 		logger.info("-----In Frontcontroller class userAuthentication method called---");
 		LoginModel loginModel=new LoginModel();
 		loginModel.setUserId(userId);

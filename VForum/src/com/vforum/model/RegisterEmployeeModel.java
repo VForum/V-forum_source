@@ -15,7 +15,6 @@ public class RegisterEmployeeModel {
 	private String dob;
 	private String password;
 	
-	public RegisterEmployeeModel() { }
 
 
 	public String getEmployeeUid() {

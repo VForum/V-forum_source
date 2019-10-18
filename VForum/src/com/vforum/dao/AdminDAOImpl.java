@@ -26,7 +26,7 @@ public class AdminDAOImpl implements AdminDAO{
 		Statement statement=connection.createStatement();
 		logger.info("---- retrieving employees data from database ---- ");
 		ResultSet resultSet = statement.executeQuery("select * from employees_info");
-		
+		statement.close();
 		List<Employees> employeesList=new ArrayList<Employees>();
 		while(resultSet.next()) {
 			Employees employees=new Employees();
@@ -57,7 +57,7 @@ public class AdminDAOImpl implements AdminDAO{
 		logger.info("---- retrieving questions data from database ---- ");
 		ResultSet resultSet=
 				statement.executeQuery("select * from questions");
-		
+		statement.close();
 		List<Posts> postList=new ArrayList<Posts>();
 		while(resultSet.next()) {
 			Posts post=new Posts();
@@ -82,13 +82,14 @@ public class AdminDAOImpl implements AdminDAO{
 				connection.prepareStatement("delete from questions where post_id=?");
 		statement.setInt(1,postId);
 		int rows=statement.executeUpdate();
+		statement.close();
 		ConnectionManager.closeConnection();
 		logger.info("---- In deleteQuestion method of AdminDAOImpl class the database connection closed---");
 		logger.info("---- In AdminDAOImpl deleteQuestion method completed ---- ");
-		if(rows>0)
-			return true;
-		else
-		return false;
+		if(rows>0) {
+			return true;}
+		else {
+		return false;}
 	}
 }
 

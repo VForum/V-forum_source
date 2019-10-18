@@ -1,5 +1,7 @@
 package com.vforum.model;
-
+/*
+ * This is class used to storing data temporarily of posting answers
+ */
 import java.time.LocalDate;
 
 public class PostAnswerModel {
@@ -10,9 +12,6 @@ public class PostAnswerModel {
 	private int answerId;
 	private LocalDate dateCreated;
 	private LocalDate dateUpdated;
-	public PostAnswerModel() {
-		
-	}
 	public String getEmpUserId() {
 		return empUserId;
 	}
@@ -53,53 +52,6 @@ public class PostAnswerModel {
 	public String toString() {
 		return "PostAnswerModel [empUserId=" + empUserId + ", postId=" + postId + ", answer=" + answer + ", answerId="
 				+ answerId + ", dateCreated=" + dateCreated + ", dateUpdated=" + dateUpdated + "]";
-	}
-	@Override
-	public int hashCode() {
-		final int prime = 31;
-		int result = 1;
-		result = prime * result + ((answer == null) ? 0 : answer.hashCode());
-		result = prime * result + answerId;
-		result = prime * result + ((dateCreated == null) ? 0 : dateCreated.hashCode());
-		result = prime * result + ((dateUpdated == null) ? 0 : dateUpdated.hashCode());
-		result = prime * result + ((empUserId == null) ? 0 : empUserId.hashCode());
-		result = prime * result + postId;
-		return result;
-	}
-	@Override
-	public boolean equals(Object obj) {
-		if (this == obj)
-			return true;
-		if (obj == null)
-			return false;
-		if (getClass() != obj.getClass())
-			return false;
-		PostAnswerModel other = (PostAnswerModel) obj;
-		if (answer == null) {
-			if (other.answer != null)
-				return false;
-		} else if (!answer.equals(other.answer))
-			return false;
-		if (answerId != other.answerId)
-			return false;
-		if (dateCreated == null) {
-			if (other.dateCreated != null)
-				return false;
-		} else if (!dateCreated.equals(other.dateCreated))
-			return false;
-		if (dateUpdated == null) {
-			if (other.dateUpdated != null)
-				return false;
-		} else if (!dateUpdated.equals(other.dateUpdated))
-			return false;
-		if (empUserId == null) {
-			if (other.empUserId != null)
-				return false;
-		} else if (!empUserId.equals(other.empUserId))
-			return false;
-		if (postId != other.postId)
-			return false;
-		return true;
 	}
 	
 }

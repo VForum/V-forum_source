@@ -23,13 +23,14 @@ public class PostAnswerDAOImpl implements PostAnswerDAO {
 		statement.setString(2,answers.getEmpUserId());
 		statement.setString(3,answers.getAnswer());
 		int rows=statement.executeUpdate();
+		statement.close();
 		ConnectionManager.closeConnection();
 		logger.info("---- In PostAnswerDAOImpl storeAnswer method completed ---- ");
-		if(rows>0)
-			return true;
-		else
+		if(rows>0) {
+			return true;}
+		else {
 	
-		return false;
+		return false;}
 	}
 
 }

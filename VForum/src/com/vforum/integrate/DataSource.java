@@ -1,5 +1,7 @@
 package com.vforum.integrate;
-
+/*
+ * This class retrives database credentials from DB.properties file
+ */
 import java.util.ResourceBundle;
 
 public class DataSource {

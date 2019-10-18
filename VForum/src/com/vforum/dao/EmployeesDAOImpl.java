@@ -34,17 +34,19 @@ public class EmployeesDAOImpl implements EmployeesDAO {
 			statementEmployeesInfo.setString(6,employees.getDesignation());
 			statementEmployeesInfo.setString(7,employees.getDob());
 			int rows1=statementEmployeesInfo.executeUpdate();
+			statementEmployeesInfo.close();
 			PreparedStatement statementUserCredentials=
 					connection.prepareStatement("insert into user_credentials values(?,?,'EMPLOYEE')");
 			statementUserCredentials.setString(1,employees.getEmployeeUid());
 			statementUserCredentials.setString(2,employees.getPassword());
 			int rows2=statementUserCredentials.executeUpdate();
+			statementUserCredentials.close();
 			ConnectionManager.closeConnection();
 			logger.info("---- In EmployeesDAOImpl storeEmployeeDetails method completed ---- ");
-			if(rows1>0 && rows2>0)
-				return true;
-			else
-				return false;
+			if(rows1>0 && rows2>0) {
+				return true;}
+			else {
+				return false;}
 		} 
 	
 	@Override
@@ -55,7 +57,7 @@ public class EmployeesDAOImpl implements EmployeesDAO {
 		Statement statement=connection.createStatement();
 		ResultSet resultSet=
 				statement.executeQuery("select * from questions");
-		
+		statement.close();
 		List<Posts> postList=new ArrayList<Posts>();
 		while(resultSet.next()) {
 			Posts post=new Posts();
@@ -79,6 +81,7 @@ public class EmployeesDAOImpl implements EmployeesDAO {
 				connection.prepareStatement("select * from employees_info where employee_uname=?");
 				profile.setString(1,loginModel.getUserId());
 		ResultSet resultSet=profile.executeQuery();
+		profile.close();
 		List<Employees> employeesList=new ArrayList<Employees>();
 		while(resultSet.next()) {
 			Employees employees=new Employees();
@@ -104,7 +107,7 @@ public class EmployeesDAOImpl implements EmployeesDAO {
 				connection.prepareStatement("select * from answers where a_post_id=?");
 				answers.setInt(1,postId);
 		ResultSet resultSet=answers.executeQuery();
-		
+		answers.close();
 		List<Answers> answerList=new ArrayList<Answers>();
 		while(resultSet.next()) {
 			Answers answer=new Answers();

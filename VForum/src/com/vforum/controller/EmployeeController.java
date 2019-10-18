@@ -1,5 +1,8 @@
 package com.vforum.controller;
-
+/**
+ * This class controls the operations of employees
+ */
+import java.io.IOException;
 import java.sql.SQLException;
 import java.util.List;
 
@@ -26,7 +29,7 @@ public class EmployeeController {
 				FactoryEmployeeDB.createEmployeesService();
 	}
 
-	public void handleRegisterEmployee(RegisterEmployeeModel model) throws ClassNotFoundException, SQLException{
+	public void handleRegisterEmployee(RegisterEmployeeModel model) throws ClassNotFoundException, SQLException, IOException{
 		
 		EmployeesModelValidator validator=new EmployeesModelValidator();
 				

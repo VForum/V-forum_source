@@ -1,5 +1,7 @@
 package com.vforum.dao;
-
+/*
+ * This interface of admin contains the function declaration of the services
+ */
 import java.sql.SQLException;
 import java.util.List;
 

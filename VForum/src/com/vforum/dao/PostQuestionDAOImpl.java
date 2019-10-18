@@ -23,13 +23,14 @@ public class PostQuestionDAOImpl implements PostQuestionDAO {
 		statement.setString(2,posts.getPost());
 		statement.setString(3,posts.getCategory());
 		int rows=statement.executeUpdate();
+		statement.close();
 		ConnectionManager.closeConnection();
 		logger.info("---- In PostAnswerDAOImpl storeQuestion method completed ---- ");
-		if(rows>0)
-			return true;
-		else
+		if(rows>0) {
+			return true;}
+		else {
 	
-		return false;
+		return false;}
 	}
 
 }

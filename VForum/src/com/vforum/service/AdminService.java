@@ -1,5 +1,7 @@
 package com.vforum.service;
-
+/*
+ * This is service class  of admin
+ */
 import java.util.List;
 
 import com.vforum.model.EmployeeModel;
